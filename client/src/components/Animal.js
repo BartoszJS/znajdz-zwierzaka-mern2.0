@@ -2,9 +2,11 @@ import React from 'react';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { useAppContext } from '../context/appContext';
-import Wrapper from '../assets/wrappers/Job';
+import Wrapper from '../assets/wrappers/Animal';
 import AnimalInfo from './AnimalInfo';
 import { FaLocationArrow, FaBriefcase, FaCalendarAlt } from 'react-icons/fa';
+import img from '../assets/images/dodge.jpg';
+import img2 from '../assets/images/ver1.jpg';
 
 const Animal = ({
   _id,
@@ -25,7 +27,9 @@ const Animal = ({
   return (
     <Wrapper>
       <header>
-        <div className='main-icon'>{name.charAt(0)}</div>
+        <div className='img-div'>
+          <img className='img' src={img} />
+        </div>
         <div className='info'>
           <h5>{name}</h5>
           <p>{rase}</p>
@@ -33,9 +37,26 @@ const Animal = ({
       </header>
       <div className='content'>
         <div className='content-center'>
-          <AnimalInfo icon={<FaLocationArrow />} text={city} />
-          <AnimalInfo icon={<FaCalendarAlt />} text={dateOfCreate} />
-          <AnimalInfo icon={<FaCalendarAlt />} text={dateOfLossNice} />
+          <AnimalInfo
+            icon={<FaLocationArrow />}
+            text={city}
+            labelText='Miasto:'
+          />
+          <AnimalInfo
+            icon={<FaLocationArrow />}
+            text={province}
+            labelText='Województwo:'
+          />
+          <AnimalInfo
+            icon={<FaCalendarAlt />}
+            text={dateOfCreate}
+            labelText='Data dodania:'
+          />
+          <AnimalInfo
+            icon={<FaCalendarAlt />}
+            text={dateOfLossNice}
+            labelText='Data zaginięcia:'
+          />
         </div>
       </div>
     </Wrapper>

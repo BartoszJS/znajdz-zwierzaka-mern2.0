@@ -199,7 +199,7 @@ const AppProvider = ({ children }) => {
     try {
       const { name, rase, description, province, city, dateOfLoss, image } =
         state;
-      await authFetch.post('/animal', {
+      await authFetch.post('/animals', {
         name,
         rase,
         description,
