@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import morgan from 'morgan';
 import 'express-async-errors';
+import fileUpload from 'express-fileupload';
 
 //db and auth
 import connectDB from './db/connect.js';
@@ -21,7 +22,9 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('dev'));
 }
 
+app.use(express.static('./client/public'));
 app.use(express.json());
+app.use(fileUpload());
 
 // app.get('/', (req, res) => {
 //   res.json({ msg: 'Welcome' });

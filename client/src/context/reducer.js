@@ -20,6 +20,9 @@ import {
   CLEAR_VALUES,
   GET_ANIMAL_BEGIN,
   GET_ANIMAL_SUCCESS,
+  UPLOAD_PHOTO_BEGIN,
+  UPLOAD_PHOTO_ERROR,
+  UPLOAD_PHOTO_SUCCESS,
 } from './actions';
 
 import { initialState } from './appContext';
@@ -189,6 +192,29 @@ const reducer = (state, action) => {
       numOfPages: action.payload.numOfPages,
     };
   }
+
+  if (action.type === UPLOAD_PHOTO_BEGIN) {
+    return { ...state, isLoading: true };
+  }
+  if (action.type === UPLOAD_PHOTO_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'success',
+      alertText: 'Zwierze zostało dodane',
+    };
+  }
+  if (action.type === UPLOAD_PHOTO_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'danger',
+      alertText: action.payload.msg,
+    };
+  }
+
   throw new Error(`no such action: ${action.type}`);
 };
 

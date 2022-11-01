@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import { useAppContext } from '../context/appContext';
 import Wrapper from '../assets/wrappers/Animal';
 import AnimalInfo from './AnimalInfo';
-import { FaLocationArrow, FaBriefcase, FaCalendarAlt } from 'react-icons/fa';
+import { FaLocationArrow, FaCity, FaCalendarAlt } from 'react-icons/fa';
+import { GiPoland } from 'react-icons/gi';
 import img from '../assets/images/dodge.jpg';
 import img2 from '../assets/images/ver1.jpg';
 
@@ -15,6 +16,7 @@ const Animal = ({
   description,
   province,
   city,
+  image,
   dateOfLoss,
   createdAt,
 }) => {
@@ -22,13 +24,13 @@ const Animal = ({
 
   let dateOfCreate = moment(createdAt);
   let dateOfLossNice = moment(dateOfLoss);
-  dateOfCreate = dateOfCreate.format('MMM Do, YYYY');
-  dateOfLossNice = dateOfLossNice.format('MMM Do, YYYY');
+  dateOfCreate = dateOfCreate.format('ll');
+  dateOfLossNice = dateOfLossNice.format('ll');
   return (
     <Wrapper>
       <header>
         <div className='img-div'>
-          <img className='img' src={img} />
+          <img className='img' src={image} />
         </div>
         <div className='info'>
           <h5>{name}</h5>
@@ -43,7 +45,7 @@ const Animal = ({
             labelText='Miasto:'
           />
           <AnimalInfo
-            icon={<FaLocationArrow />}
+            icon={<GiPoland />}
             text={province}
             labelText='Województwo:'
           />

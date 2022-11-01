@@ -24,6 +24,9 @@ import {
   CREATE_ANIMAL_SUCCESS,
   GET_ANIMAL_BEGIN,
   GET_ANIMAL_SUCCESS,
+  UPLOAD_PHOTO_BEGIN,
+  UPLOAD_PHOTO_ERROR,
+  UPLOAD_PHOTO_SUCCESS,
 } from './actions';
 
 const token = localStorage.getItem('token');
@@ -194,32 +197,6 @@ const AppProvider = ({ children }) => {
     dispatch({ type: HANDLE_CHANGE, payload: { name, value } });
   };
 
-  const createAnimal = async () => {
-    dispatch({ type: CREATE_ANIMAL_BEGIN });
-    try {
-      const { name, rase, description, province, city, dateOfLoss, image } =
-        state;
-      await authFetch.post('/animals', {
-        name,
-        rase,
-        description,
-        province,
-        city,
-        dateOfLoss,
-        image,
-      });
-      dispatch({ type: CREATE_ANIMAL_SUCCESS });
-      dispatch({ type: CLEAR_VALUES });
-    } catch (error) {
-      if (error.response.status !== 401)
-        return dispatch({
-          type: CREATE_ANIMAL_ERROR,
-          payload: { msg: error.response.data.msg },
-        });
-    }
-    clearAlert();
-  };
-
   const getAnimals = async () => {
     let url = `/animals`;
 
@@ -248,6 +225,66 @@ const AppProvider = ({ children }) => {
   const clearValues = () => {
     dispatch({ type: CLEAR_VALUES });
   };
+
+  const createAnimal = async () => {
+    dispatch({ type: CREATE_ANIMAL_BEGIN });
+    try {
+      const { name, rase, description, province, city, dateOfLoss, image } =
+        state;
+      await authFetch.post('/animals', {
+        name,
+        rase,
+        description,
+        province,
+        city,
+        dateOfLoss,
+        image,
+      });
+      dispatch({ type: CREATE_ANIMAL_SUCCESS });
+      dispatch({ type: CLEAR_VALUES });
+    } catch (error) {
+      if (error.response.status !== 401)
+        return dispatch({
+          type: CREATE_ANIMAL_ERROR,
+          payload: { msg: error.response.data.msg },
+        });
+    }
+    clearAlert();
+  };
+
+  const uploadPhoto = async (e) => {
+    dispatch({ type: UPLOAD_PHOTO_BEGIN });
+
+    let imageValue;
+    const url = '/animals';
+    const imageFile = e.target.files[0];
+    const formData = new FormData();
+    formData.append('image', imageFile);
+
+    try {
+      const {
+        data: {
+          image: { src },
+        },
+      } = await authFetch.post(`${url}/uploads`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      imageValue = src;
+      console.log(imageValue);
+      dispatch({ type: UPLOAD_PHOTO_SUCCESS });
+    } catch (error) {
+      if (error.response.status !== 401)
+        return dispatch({
+          type: UPLOAD_PHOTO_ERROR,
+          payload: { msg: error.response.data.msg },
+        });
+    }
+    clearAlert();
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -265,6 +302,7 @@ const AppProvider = ({ children }) => {
         getAnimals,
         setEditAnimal,
         deleteAnimal,
+        uploadPhoto,
       }}
     >
       {children}

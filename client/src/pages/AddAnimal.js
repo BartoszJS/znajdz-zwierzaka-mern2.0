@@ -1,9 +1,11 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
 import Wrapper from '../assets/wrappers/DashboardFormPage';
 import { FormRow, FormRowSelect, Alert } from '../components';
 import { useAppContext } from '../context/appContext';
 
 const AddAnimal = () => {
+  const [imageValue, setImageValue] = useState(null);
   const {
     isLoading,
     isEditing,
@@ -20,6 +22,7 @@ const AddAnimal = () => {
     handleChange,
     clearValues,
     createAnimal,
+    uploadPhoto,
   } = useAppContext();
 
   const handleAnimalInput = (e) => {
@@ -38,6 +41,39 @@ const AddAnimal = () => {
       return;
     }
     createAnimal();
+  };
+
+  const handleAnimalPhoto = (e) => {
+    e.preventDefault();
+    uploadPhoto(e);
+  };
+
+  const fileSelectedHandler = async (e) => {
+    e.preventDefault();
+    let imageValue;
+    const url = '/api/v1/animals';
+    const imageFile = e.target.files[0];
+    const formData = new FormData();
+    formData.append('image', imageFile);
+
+    try {
+      const {
+        data: {
+          image: { src },
+        },
+      } = await axios.post(`${url}/uploads`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      imageValue = src;
+
+      console.log(imageValue);
+      return false;
+    } catch (error) {
+      console.log('aaaaa');
+    }
   };
 
   return (
@@ -67,6 +103,7 @@ const AddAnimal = () => {
             labelText='Miasto'
             handleChange={handleAnimalInput}
           />
+
           <label htmlFor='description' className='form-label'>
             Opis
           </label>
@@ -91,13 +128,16 @@ const AddAnimal = () => {
             labelText='Data zaginięcia'
             handleChange={handleAnimalInput}
           />
-          <FormRow
-            type='text'
+          {/* <FormRow
+            type='file'
+            labelText='Dodaj zdjęcie'
             name='image'
             value={image}
-            labelText='Image'
-            handleChange={handleAnimalInput}
-          />
+            accept='image/*'
+            handleChange={handleAnimalPhoto}
+          /> */}
+          <input type='file' onChange={fileSelectedHandler} />
+
           <div className='btn-container'>
             <button
               type='submit'
