@@ -18,6 +18,13 @@ const getAllAnimals = async (req, res) => {
     .status(StatusCodes.OK)
     .json({ animals, totalAnimals: animals.length, numOfPages: 1 });
 };
+const getAllUserAnimals = async (req, res) => {
+  const animals = await Animal.find({ createdBy: req.user.userId });
+
+  res
+    .status(StatusCodes.OK)
+    .json({ animals, totalAnimals: animals.length, numOfPages: 1 });
+};
 const getAnimal = async (req, res) => {
   res.send('get animal');
 };
@@ -28,4 +35,11 @@ const deleteAnimal = async (req, res) => {
   res.send('delete animal');
 };
 
-export { createAnimal, deleteAnimal, getAllAnimals, updateAnimal, getAnimal };
+export {
+  createAnimal,
+  deleteAnimal,
+  getAllAnimals,
+  getAllUserAnimals,
+  updateAnimal,
+  getAnimal,
+};

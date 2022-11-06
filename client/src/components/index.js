@@ -11,6 +11,7 @@ import ProfileEdit from '../components/ProfileEdit.js';
 import Profile from '../components/Profile.js';
 import SearchContainer from './SearchContainer.js';
 import AnimalsContainer from './AnimalsContainer.js';
+import UsersAnimals from './UsersAnimals.js';
 
 export {
   Logo,
@@ -26,4 +27,5 @@ export {
   SearchContainer,
   Profile,
   ProfileEdit,
+  UsersAnimals,
 };

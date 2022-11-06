@@ -213,6 +213,22 @@ const AppProvider = ({ children }) => {
     }
     clearAlert();
   };
+  const getUsersAnimals = async () => {
+    let url = `/animals/profile`;
+
+    dispatch({ type: GET_ANIMAL_BEGIN });
+    try {
+      const { data } = await authFetch.get(url);
+      const { animals, totalAnimals, numOfPages } = data;
+      dispatch({
+        type: GET_ANIMAL_SUCCESS,
+        payload: { animals, totalAnimals, numOfPages },
+      });
+    } catch (error) {
+      console.log(error.response);
+    }
+    clearAlert();
+  };
 
   const setEditAnimal = (id) => {
     console.log(`set edit job: ${id}`);
@@ -303,6 +319,7 @@ const AppProvider = ({ children }) => {
         setEditAnimal,
         deleteAnimal,
         uploadPhoto,
+        getUsersAnimals,
       }}
     >
       {children}

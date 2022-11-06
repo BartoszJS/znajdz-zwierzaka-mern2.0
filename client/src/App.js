@@ -7,7 +7,12 @@ import {
   ProtectedRoute,
   GetAllAnimals,
 } from './pages';
-import { Profile, ProfileEdit, AnimalsContainer } from './components';
+import {
+  Profile,
+  ProfileEdit,
+  AnimalsContainer,
+  UsersAnimals,
+} from './components';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -32,7 +37,7 @@ function App() {
             element={
               <ProtectedRoute>
                 <Profile />
-                <AnimalsContainer />
+                <UsersAnimals />
               </ProtectedRoute>
             }
           />

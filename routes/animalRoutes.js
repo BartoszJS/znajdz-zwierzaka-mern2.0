@@ -5,6 +5,7 @@ import {
   createAnimal,
   deleteAnimal,
   getAllAnimals,
+  getAllUserAnimals,
   updateAnimal,
   getAnimal,
 } from '../controllers/animalsController.js';
@@ -14,6 +15,7 @@ import authenticateUser from '../middleware/auth.js';
 router.route('/').post(authenticateUser, createAnimal);
 router.route('/uploads').post(uploadAnimalImage);
 router.route('/').get(getAllAnimals);
+router.route('/profile').get(authenticateUser, getAllUserAnimals);
 
 router.route('/:id').get(getAnimal);
 router.route('/:id').delete(authenticateUser, deleteAnimal);
