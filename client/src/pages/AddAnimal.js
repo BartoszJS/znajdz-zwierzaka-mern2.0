@@ -136,8 +136,14 @@ const AddAnimal = () => {
             accept='image/*'
             handleChange={handleAnimalPhoto}
           /> */}
-          <input type='file' onChange={fileSelectedHandler} />
-
+          {/* <input type='file' onChange={fileSelectedHandler} /> */}
+          <FormRow
+            type='text'
+            name='image'
+            value={image}
+            labelText='Zdjęcie zwierzaka'
+            handleChange={handleAnimalInput}
+          />
           <div className='btn-container'>
             <button
               type='submit'

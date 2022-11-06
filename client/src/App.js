@@ -2,12 +2,12 @@ import { Header } from './components';
 import {
   AddAnimal,
   Error,
-  GetAllAnimals,
   Landing,
   Register,
   ProtectedRoute,
-  Profile,
+  GetAllAnimals,
 } from './pages';
+import { Profile, ProfileEdit, AnimalsContainer } from './components';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -32,6 +32,15 @@ function App() {
             element={
               <ProtectedRoute>
                 <Profile />
+                <AnimalsContainer />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/profile/edit'
+            element={
+              <ProtectedRoute>
+                <ProfileEdit />
               </ProtectedRoute>
             }
           />

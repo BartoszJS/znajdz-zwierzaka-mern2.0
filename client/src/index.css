@@ -197,7 +197,9 @@ ul {
   background: var(--primary-700);
 }
 .btn-block {
-  width: 100%;
+  width: 40%;
+  margin-left: 28%;
+  margin-right: 32%;
 }
 .btn-hero {
   font-size: 1.25rem;
@@ -247,9 +249,9 @@ ul {
 .form-label {
   display: block;
   font-size: var(--smallText);
-  margin-bottom: 0.5rem;
   text-transform: capitalize;
   letter-spacing: var(--letterSpacing);
+  width: 100%;
 }
 .form-input,
 .form-textarea,
@@ -263,7 +265,7 @@ ul {
 .form-input,
 .form-select,
 .btn-block {
-  height: 35px;
+  height: 40px;
 }
 .form-row {
   margin-bottom: 1rem;
