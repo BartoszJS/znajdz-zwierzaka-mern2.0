@@ -16,6 +16,17 @@ const Wrapper = styled.section`
     padding: 0;
     max-width: 100%;
     width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .textArea {
+    width: 95%;
+    padding: 0.375rem 0.75rem;
+    border-radius: var(--borderRadius);
+    background: var(--backgroundColor);
+    border: 1px solid var(--grey-200);
+    margin-bottom: 1rem;
+    resize: none;
   }
   .form-row {
     margin-bottom: 0;

@@ -79,56 +79,47 @@ const AddAnimal = () => {
   return (
     <Wrapper>
       <div className='cont'>
-        <form className='form'>
-          <h3>{isEditing ? 'Edytuj zwierzaka' : 'Dodaj zwierzaka'}</h3>
-          {showAlert && <Alert />}
-          <FormRow
-            type='text'
-            name='name'
-            value={name}
-            labelText='Imie'
-            handleChange={handleAnimalInput}
-          />
-          <FormRow
-            type='text'
-            name='rase'
-            value={rase}
-            labelText='Rasa'
-            handleChange={handleAnimalInput}
-          />
-          <FormRow
-            type='text'
-            name='city'
-            value={city}
-            labelText='Miasto'
-            handleChange={handleAnimalInput}
-          />
+        <h3>{isEditing ? 'Edytuj zwierzaka' : 'Dodaj zwierzaka'}</h3>
+        {showAlert && <Alert />}
+        <form>
+          <div className='form'>
+            <FormRow
+              type='text'
+              name='name'
+              value={name}
+              labelText='Imie'
+              handleChange={handleAnimalInput}
+            />
+            <FormRow
+              type='text'
+              name='rase'
+              value={rase}
+              labelText='Rasa'
+              handleChange={handleAnimalInput}
+            />
+            <FormRow
+              type='text'
+              name='city'
+              value={city}
+              labelText='Miasto'
+              handleChange={handleAnimalInput}
+            />
 
-          <label htmlFor='description' className='form-label'>
-            Opis
-          </label>
-          <textarea
-            type='text'
-            name='description'
-            value={description}
-            placeholder='Może tu być kolor, znaki szczególne zwierzaka lub szczegóły zdarzenia'
-            onChange={handleAnimalInput}
-          />
-          <FormRowSelect
-            name='province'
-            value={province}
-            labelText='Województwo'
-            handleChange={handleAnimalInput}
-            list={provinceOptions}
-          />
-          <FormRow
-            type='date'
-            name='dateOfLoss'
-            value={dateOfLoss}
-            labelText='Data zaginięcia'
-            handleChange={handleAnimalInput}
-          />
-          {/* <FormRow
+            <FormRowSelect
+              name='province'
+              value={province}
+              labelText='Województwo'
+              handleChange={handleAnimalInput}
+              list={provinceOptions}
+            />
+            <FormRow
+              type='date'
+              name='dateOfLoss'
+              value={dateOfLoss}
+              labelText='Data zaginięcia'
+              handleChange={handleAnimalInput}
+            />
+            {/* <FormRow
             type='file'
             labelText='Dodaj zdjęcie'
             name='image'
@@ -136,14 +127,29 @@ const AddAnimal = () => {
             accept='image/*'
             handleChange={handleAnimalPhoto}
           /> */}
-          {/* <input type='file' onChange={fileSelectedHandler} /> */}
-          <FormRow
-            type='text'
-            name='image'
-            value={image}
-            labelText='Zdjęcie zwierzaka'
-            handleChange={handleAnimalInput}
-          />
+            {/* <input type='file' onChange={fileSelectedHandler} /> */}
+            <FormRow
+              type='text'
+              name='image'
+              value={image}
+              labelText='Zdjęcie zwierzaka'
+              handleChange={handleAnimalInput}
+            />
+          </div>
+          <div>
+            <label htmlFor='description' className='form-label'>
+              Opis
+            </label>
+            <textarea
+              rows='3'
+              className='textArea'
+              type='text'
+              name='description'
+              value={description}
+              placeholder='Może tu być kolor, znaki szczególne zwierzaka lub szczegóły zdarzenia'
+              onChange={handleAnimalInput}
+            />
+          </div>
           <div className='btn-container'>
             <button
               type='submit'
@@ -151,7 +157,7 @@ const AddAnimal = () => {
               onClick={handleSubmit}
               disabled={isLoading}
             >
-              OK
+              Dodaj
             </button>
             <button
               className='btn btn-block clear-btn'
@@ -160,7 +166,7 @@ const AddAnimal = () => {
                 clearValues();
               }}
             >
-              clear
+              Wyczyść
             </button>
           </div>
         </form>
