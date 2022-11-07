@@ -119,22 +119,22 @@ const AddAnimal = () => {
               labelText='Data zaginięcia'
               handleChange={handleAnimalInput}
             />
-            {/* <FormRow
-            type='file'
-            labelText='Dodaj zdjęcie'
-            name='image'
-            value={image}
-            accept='image/*'
-            handleChange={handleAnimalPhoto}
-          /> */}
-            {/* <input type='file' onChange={fileSelectedHandler} /> */}
             <FormRow
+              type='file'
+              labelText='Dodaj zdjęcie'
+              name='image'
+              value={image}
+              accept='image/*'
+              handleChange={handleAnimalPhoto}
+            />
+            {/* <input type='file' onChange={fileSelectedHandler} /> */}
+            {/* <FormRow
               type='text'
               name='image'
               value={image}
               labelText='Zdjęcie zwierzaka'
               handleChange={handleAnimalInput}
-            />
+            /> */}
           </div>
           <div>
             <label htmlFor='description' className='form-label'>
