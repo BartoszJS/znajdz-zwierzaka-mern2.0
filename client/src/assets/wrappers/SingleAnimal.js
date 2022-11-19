@@ -14,7 +14,7 @@ const Wrapper = styled.article`
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-
+    margin-top: 120px;
     h5 {
       letter-spacing: 0;
     }

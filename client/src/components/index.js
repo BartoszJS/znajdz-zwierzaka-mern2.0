@@ -12,6 +12,7 @@ import Profile from '../components/Profile.js';
 import SearchContainer from './SearchContainer.js';
 import AnimalsContainer from './AnimalsContainer.js';
 import UsersAnimals from './UsersAnimals.js';
+import SingleAnimal from './SingleAnimal.js';
 
 export {
   Logo,
@@ -28,4 +29,5 @@ export {
   Profile,
   ProfileEdit,
   UsersAnimals,
+  SingleAnimal,
 };

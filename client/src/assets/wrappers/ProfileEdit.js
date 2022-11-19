@@ -21,6 +21,31 @@ const Wrapper = styled.section`
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+
+  .place {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .text {
+    margin: 0;
+    font-weight: 400;
+    text-transform: capitalize;
+    font-size: 1.953rem;
+    color: black;
+    margin-bottom: 8px;
+    margin-right: 10px;
+  }
+  .icon {
+    margin: 0;
+    font-weight: 400;
+    text-transform: capitalize;
+
+    color: black;
+    font-size: 1.953rem;
+  }
+
   .form-input {
     width: 90%;
   }

@@ -18,9 +18,10 @@ const Wrapper = styled.section`
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-column-gap: 50px;
   }
   .textArea {
-    width: 95%;
+    width: 100%;
     padding: 0.375rem 0.75rem;
     border-radius: var(--borderRadius);
     background: var(--backgroundColor);

@@ -268,7 +268,6 @@ ul {
   height: 40px;
 }
 .form-row {
-  width: 90%;
   margin-bottom: 1rem;
 }
 
@@ -380,4 +379,16 @@ ul {
   padding-left: 10px;
   color: white;
   font-weight: 500;
+}
+
+.paddingTop120 {
+  padding-top: 120px;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scrollbar-width: none;
 }

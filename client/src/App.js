@@ -12,6 +12,7 @@ import {
   ProfileEdit,
   AnimalsContainer,
   UsersAnimals,
+  SingleAnimal,
 } from './components';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -49,6 +50,7 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route path='/animals/:id' element={<SingleAnimal />} />
           <Route path='*' element={<Error />} />
         </Routes>
       </BrowserRouter>

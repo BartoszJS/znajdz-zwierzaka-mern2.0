@@ -1,26 +1,37 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.article`
-  background: var(--white);
+  background: var(--backgroundColor);
   border-radius: var(--borderRadius);
   display: grid;
   grid-template-rows: 1fr auto;
   box-shadow: var(--shadow-2);
+  color: black;
+
+  h5 {
+    text-transform: none;
+  }
+
+  .cont {
+    margin-top: 2rem;
+  }
 
   header {
+    background: var(--white);
     padding: 1rem 1.5rem;
     border-bottom: 1px solid var(--grey-100);
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     align-items: center;
 
     h5 {
       letter-spacing: 0;
+      text-transform: none;
     }
   }
 
   .img {
-    width: 300px;
+    width: 83%;
     height: 200px;
     display: grid;
     place-items: center;
@@ -58,13 +69,15 @@ const Wrapper = styled.article`
   }
   .content {
     padding: 1rem 1.5rem;
-
+    background: var(--white);
     grid-template-columns: 0.5fr 0.5fr;
   }
   .content-center {
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 0.5rem;
+    margin-left: 10%;
+
     @media (min-width: 576px) {
       grid-template-columns: 1fr 1fr;
     }
@@ -87,6 +100,12 @@ const Wrapper = styled.article`
   footer {
     margin-top: 1rem;
   }
+
+  .actions {
+    display: grid;
+    grid-template-columns: 0.5fr;
+    grid-gap: 20px;
+  }
   .edit-btn,
   .delete-btn {
     letter-spacing: var(--letterSpacing);
@@ -96,11 +115,12 @@ const Wrapper = styled.article`
   .edit-btn {
     color: var(--green-dark);
     background: var(--green-light);
-    margin-right: 0.5rem;
+    text-align: center;
   }
   .delete-btn {
     color: var(--red-dark);
     background: var(--red-light);
+    text-align: center;
   }
   &:hover .actions {
     visibility: visible;

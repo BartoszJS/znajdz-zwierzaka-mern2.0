@@ -23,6 +23,7 @@ const AddAnimal = () => {
     clearValues,
     createAnimal,
     uploadPhoto,
+    editAnimal,
   } = useAppContext();
 
   const handleAnimalInput = (e) => {
@@ -38,6 +39,7 @@ const AddAnimal = () => {
       return;
     }
     if (isEditing) {
+      editAnimal();
       return;
     }
     createAnimal();
@@ -120,6 +122,7 @@ const AddAnimal = () => {
               handleChange={handleAnimalInput}
             />
             <FormRow
+              style={{ backgroundColor: 'red' }}
               type='file'
               labelText='Dodaj zdjęcie'
               name='image'
@@ -157,7 +160,7 @@ const AddAnimal = () => {
               onClick={handleSubmit}
               disabled={isLoading}
             >
-              Dodaj
+              {isEditing ? 'Edytuj' : 'Dodaj'}
             </button>
             <button
               className='btn btn-block clear-btn'

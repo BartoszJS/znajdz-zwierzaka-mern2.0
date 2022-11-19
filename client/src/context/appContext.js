@@ -27,6 +27,15 @@ import {
   UPLOAD_PHOTO_BEGIN,
   UPLOAD_PHOTO_ERROR,
   UPLOAD_PHOTO_SUCCESS,
+  GET_ONEANIMAL_BEGIN,
+  GET_ONEANIMAL_SUCCESS,
+  SET_EDIT_ANIMAL,
+  DELETE_ANIMAL_BEGIN,
+  EDIT_ANIMAL_BEGIN,
+  EDIT_ANIMAL_SUCCESS,
+  EDIT_ANIMAL_ERROR,
+  CLEAR_FILTERS,
+  CHANGE_PAGE,
 } from './actions';
 
 const token = localStorage.getItem('token');
@@ -45,6 +54,7 @@ const initialState = {
   description: '',
   name: '',
   rase: '',
+  _id: '',
   provinceOptions: [
     'dolnośląskie',
     'kujawsko-pomorskie',
@@ -68,9 +78,14 @@ const initialState = {
   dateOfLoss: '',
   image: '',
   animals: [],
+  animal: {},
   totalAnimals: 0,
   numOfPages: 1,
   page: 1,
+
+  searchProvince: 'Wszystkie',
+  sort: 'Najnowsze',
+  sortOptions: ['Najnowsze', 'Najstarsze'],
 };
 
 const AppContext = React.createContext();
@@ -198,7 +213,11 @@ const AppProvider = ({ children }) => {
   };
 
   const getAnimals = async () => {
-    let url = `/animals`;
+    const { page, city, searchProvince, sort } = state;
+    let url = `/animals?page=${page}&province=${searchProvince}&sort=${sort}`;
+    if (city) {
+      url = url + `&city=${city}`;
+    }
 
     dispatch({ type: GET_ANIMAL_BEGIN });
     try {
@@ -231,15 +250,47 @@ const AppProvider = ({ children }) => {
   };
 
   const setEditAnimal = (id) => {
-    console.log(`set edit job: ${id}`);
-  };
-
-  const deleteAnimal = (id) => {
-    console.log(`delete: ${id}`);
+    dispatch({ type: SET_EDIT_ANIMAL, payload: { id } });
   };
 
   const clearValues = () => {
     dispatch({ type: CLEAR_VALUES });
+  };
+
+  const editAnimal = async () => {
+    dispatch({ type: EDIT_ANIMAL_BEGIN });
+    try {
+      const { name, rase, description, province, city, dateOfLoss, image } =
+        state;
+      await authFetch.patch(`/animals/${state.editAnimalId}`, {
+        name,
+        rase,
+        description,
+        province,
+        city,
+        dateOfLoss,
+        image,
+      });
+      dispatch({ type: EDIT_ANIMAL_SUCCESS });
+      clearValues();
+    } catch (error) {
+      if (error.response.status === 401) return;
+      dispatch({
+        type: EDIT_ANIMAL_ERROR,
+        payload: { msg: error.response.data.msg },
+      });
+    }
+    clearAlert();
+  };
+
+  const deleteAnimal = async (animalId) => {
+    dispatch({ type: DELETE_ANIMAL_BEGIN });
+    try {
+      await authFetch.delete(`/animals/${animalId}`);
+      getUsersAnimals();
+    } catch (error) {
+      console.log(error.response);
+    }
   };
 
   const createAnimal = async () => {
@@ -301,6 +352,30 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
+  const getAnimal = async (id) => {
+    let url = `/animals/${id}`;
+
+    dispatch({ type: GET_ONEANIMAL_BEGIN });
+    try {
+      const { data } = await authFetch.get(url);
+      const { animal } = data;
+      dispatch({
+        type: GET_ONEANIMAL_SUCCESS,
+        payload: { animal },
+      });
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+
+  const clearFilters = () => {
+    dispatch({ type: CLEAR_FILTERS });
+  };
+
+  const changePage = (page) => {
+    dispatch({ type: CHANGE_PAGE, payload: { page } });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -320,6 +395,10 @@ const AppProvider = ({ children }) => {
         deleteAnimal,
         uploadPhoto,
         getUsersAnimals,
+        getAnimal,
+        editAnimal,
+        clearFilters,
+        changePage,
       }}
     >
       {children}

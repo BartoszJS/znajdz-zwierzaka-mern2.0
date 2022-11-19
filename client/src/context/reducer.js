@@ -23,6 +23,15 @@ import {
   UPLOAD_PHOTO_BEGIN,
   UPLOAD_PHOTO_ERROR,
   UPLOAD_PHOTO_SUCCESS,
+  GET_ONEANIMAL_SUCCESS,
+  GET_ONEANIMAL_BEGIN,
+  SET_EDIT_ANIMAL,
+  DELETE_ANIMAL_BEGIN,
+  EDIT_ANIMAL_BEGIN,
+  EDIT_ANIMAL_SUCCESS,
+  EDIT_ANIMAL_ERROR,
+  CLEAR_FILTERS,
+  CHANGE_PAGE,
 } from './actions';
 
 import { initialState } from './appContext';
@@ -138,6 +147,7 @@ const reducer = (state, action) => {
   if (action.type === HANDLE_CHANGE) {
     return {
       ...state,
+      page: 1,
       [action.payload.name]: action.payload.value,
     };
   }
@@ -183,6 +193,7 @@ const reducer = (state, action) => {
   if (action.type === GET_ANIMAL_BEGIN) {
     return { ...state, isLoading: true, showAlert: false };
   }
+
   if (action.type === GET_ANIMAL_SUCCESS) {
     return {
       ...state,
@@ -212,6 +223,78 @@ const reducer = (state, action) => {
       showAlert: true,
       alertType: 'danger',
       alertText: action.payload.msg,
+    };
+  }
+  if (action.type === GET_ONEANIMAL_BEGIN) {
+    return { ...state, isLoading: true };
+  }
+
+  if (action.type === GET_ONEANIMAL_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      animal: action.payload.animal,
+    };
+  }
+
+  if (action.type === SET_EDIT_ANIMAL) {
+    const animal = state.animals.find(
+      (animal) => animal._id === action.payload.id
+    );
+    const { _id, name, rase, description, province, city, dateOfLoss, image } =
+      animal;
+    return {
+      ...state,
+      isEditing: true,
+      editAnimalId: _id,
+      name,
+      rase,
+      description,
+      province,
+      city,
+      dateOfLoss,
+      image,
+    };
+  }
+  if (action.type === DELETE_ANIMAL_BEGIN) {
+    return { ...state, isLoading: true };
+  }
+  if (action.type === EDIT_ANIMAL_BEGIN) {
+    return {
+      ...state,
+      isLoading: true,
+    };
+  }
+  if (action.type === EDIT_ANIMAL_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'success',
+      alertText: 'Edycja pomyślna',
+    };
+  }
+  if (action.type === EDIT_ANIMAL_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'danger',
+      alertText: action.payload.msg,
+    };
+  }
+  if (action.type === CLEAR_FILTERS) {
+    return {
+      ...state,
+      city: '',
+      searchProvince: 'Wszystkie',
+      sort: 'Najnowsze',
+    };
+  }
+  if (action.type === CHANGE_PAGE) {
+    return {
+      ...state,
+      page: action.payload.page,
     };
   }
 

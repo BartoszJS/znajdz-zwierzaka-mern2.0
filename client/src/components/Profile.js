@@ -13,9 +13,10 @@ const Profile = () => {
         <div className='form'>
           <h3>Profil użytkownika</h3>
           <Link className='place' to='/profile/edit'>
-            <h3>
-              Edytuj <RiSettings2Fill />
-            </h3>
+            <div className='text'> Edytuj </div>
+            <div className='icon'>
+              <RiSettings2Fill />
+            </div>
           </Link>
 
           <div>

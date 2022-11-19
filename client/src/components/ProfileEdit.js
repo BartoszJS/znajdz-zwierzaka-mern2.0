@@ -29,10 +29,12 @@ const ProfileEdit = () => {
         <form onSubmit={handleSubmit}>
           <div className='form'>
             <h3>Edytuj użytkownika</h3>
+
             <Link className='place' to='/profile'>
-              <h3>
-                Wróć <RiSettings2Line />
-              </h3>
+              <div className='text'>Wróć </div>
+              <div className='icon'>
+                <RiSettings2Line />
+              </div>
             </Link>
           </div>
           {showAlert && <Alert />}

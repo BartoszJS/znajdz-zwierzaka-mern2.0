@@ -6,8 +6,6 @@ import Wrapper from '../assets/wrappers/Animal';
 import AnimalInfo from './AnimalInfo';
 import { FaLocationArrow, FaCity, FaCalendarAlt } from 'react-icons/fa';
 import { GiPoland } from 'react-icons/gi';
-import img from '../assets/images/dodge.jpg';
-import img2 from '../assets/images/ver1.jpg';
 
 const Animal = ({
   _id,
@@ -30,7 +28,7 @@ const Animal = ({
     <Wrapper>
       <header>
         <div className='img-div'>
-          <img className='img' src={image} />
+          <img className='img' src={image} alt='' />
         </div>
         <div className='info'>
           <h5>{name}</h5>
