@@ -121,7 +121,7 @@ const AddAnimal = () => {
               labelText='Data zaginięcia'
               handleChange={handleAnimalInput}
             />
-            {/* <FormRow
+            <FormRow
               style={{ backgroundColor: 'red' }}
               type='file'
               labelText='Dodaj zdjęcie'
@@ -129,15 +129,15 @@ const AddAnimal = () => {
               value={image}
               accept='image/*'
               handleChange={handleAnimalPhoto}
-            /> */}
+            />
             {/* <input type='file' onChange={fileSelectedHandler} /> */}
-            <FormRow
+            {/* <FormRow
               type='text'
               name='image'
               value={image}
               labelText='Zdjęcie zwierzaka'
               handleChange={handleAnimalInput}
-            />
+            /> */}
           </div>
           <div>
             <label htmlFor='description' className='form-label'>
