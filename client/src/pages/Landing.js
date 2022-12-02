@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Wrapper from '../assets/wrappers/LandingPage.js';
 import { FaArrowDown } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import AnimalsContainer from '../components/AnimalsContainer';
+import AnimalsLanding from '../components/AnimalsLanding.js';
 
 const Landing = () => {
   // const fetchData = async () => {
@@ -42,7 +42,7 @@ const Landing = () => {
           </div>
         </div>
       </div>
-      <AnimalsContainer />
+      <AnimalsLanding />
     </Wrapper>
   );
 };

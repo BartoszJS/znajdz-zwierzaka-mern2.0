@@ -49,6 +49,21 @@ const getAllAnimals = async (req, res) => {
 
   res.status(StatusCodes.OK).json({ animals, totalAnimals, numOfPages });
 };
+
+const getAnimalsLanding = async (req, res) => {
+  const queryObject = {};
+  let result = Animal.find(queryObject);
+
+  result = result.sort('-createdAt');
+  //animals = animals.sort('-createdAt');
+
+  result = result.limit(6);
+
+  const animals = await result;
+
+  res.status(StatusCodes.OK).json({ animals, totalAnimals: 6, numOfPages: 1 });
+};
+
 const getAllUserAnimals = async (req, res) => {
   const animals = await Animal.find({ createdBy: req.user.userId });
 
@@ -113,4 +128,5 @@ export {
   getAllUserAnimals,
   updateAnimal,
   getAnimal,
+  getAnimalsLanding,
 };

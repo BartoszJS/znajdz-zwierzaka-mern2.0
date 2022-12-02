@@ -32,6 +32,8 @@ import {
   EDIT_ANIMAL_ERROR,
   CLEAR_FILTERS,
   CHANGE_PAGE,
+  GET_ANIMAL_LANDING_BEGIN,
+  GET_ANIMAL_LANDING_SUCCESS,
 } from './actions';
 
 import { initialState } from './appContext';
@@ -295,6 +297,20 @@ const reducer = (state, action) => {
     return {
       ...state,
       page: action.payload.page,
+    };
+  }
+
+  if (action.type === GET_ANIMAL_LANDING_BEGIN) {
+    return { ...state, isLoading: true, showAlert: false };
+  }
+
+  if (action.type === GET_ANIMAL_LANDING_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      animals: action.payload.animals,
+      totalAnimals: action.payload.totalAnimals,
+      numOfPages: action.payload.numOfPages,
     };
   }
 

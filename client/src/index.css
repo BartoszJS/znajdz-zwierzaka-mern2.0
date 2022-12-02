@@ -197,9 +197,14 @@ ul {
   background: var(--primary-700);
 }
 .btn-block {
-  width: 40%;
-  margin-left: 28%;
-  margin-right: 32%;
+  width: 100%;
+}
+.btn-zobacz {
+  font-size: 1.25rem;
+}
+.btn-zobacz:hover {
+  transition: 0.2s;
+  background: #006a00;
 }
 .btn-hero {
   font-size: 1.25rem;
@@ -385,10 +390,10 @@ ul {
   padding-top: 120px;
 }
 
-html::-webkit-scrollbar {
+/* html::-webkit-scrollbar {
   display: none;
 }
 
 html {
   scrollbar-width: none;
-}
+} */

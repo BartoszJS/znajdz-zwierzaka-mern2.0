@@ -5,6 +5,7 @@ import {
   createAnimal,
   deleteAnimal,
   getAllAnimals,
+  getAnimalsLanding,
   getAllUserAnimals,
   updateAnimal,
   getAnimal,
@@ -14,7 +15,8 @@ import authenticateUser from '../middleware/auth.js';
 
 router.route('/').post(authenticateUser, createAnimal);
 router.route('/uploads').post(uploadAnimalImage);
-router.route('/').get(getAllAnimals);
+router.route('/').get(getAnimalsLanding);
+router.route('/wszystkie-zwierzaki').get(getAllAnimals);
 router.route('/profile').get(authenticateUser, getAllUserAnimals);
 
 router.route('/:id').get(getAnimal);

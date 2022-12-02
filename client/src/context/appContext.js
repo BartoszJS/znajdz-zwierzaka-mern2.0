@@ -36,6 +36,8 @@ import {
   EDIT_ANIMAL_ERROR,
   CLEAR_FILTERS,
   CHANGE_PAGE,
+  GET_ANIMAL_LANDING_BEGIN,
+  GET_ANIMAL_LANDING_SUCCESS,
 } from './actions';
 
 const token = localStorage.getItem('token');
@@ -214,7 +216,7 @@ const AppProvider = ({ children }) => {
 
   const getAnimals = async () => {
     const { page, city, searchProvince, sort } = state;
-    let url = `/animals?page=${page}&province=${searchProvince}&sort=${sort}`;
+    let url = `/animals/wszystkie-zwierzaki?page=${page}&province=${searchProvince}&sort=${sort}`;
     if (city) {
       url = url + `&city=${city}`;
     }
@@ -241,6 +243,22 @@ const AppProvider = ({ children }) => {
       const { animals, totalAnimals, numOfPages } = data;
       dispatch({
         type: GET_ANIMAL_SUCCESS,
+        payload: { animals, totalAnimals, numOfPages },
+      });
+    } catch (error) {
+      console.log(error.response);
+    }
+    clearAlert();
+  };
+  const getAnimalsLanding = async () => {
+    let url = `/animals`;
+
+    dispatch({ type: GET_ANIMAL_LANDING_BEGIN });
+    try {
+      const { data } = await authFetch.get(url);
+      const { animals, totalAnimals, numOfPages } = data;
+      dispatch({
+        type: GET_ANIMAL_LANDING_SUCCESS,
         payload: { animals, totalAnimals, numOfPages },
       });
     } catch (error) {
@@ -399,6 +417,7 @@ const AppProvider = ({ children }) => {
         editAnimal,
         clearFilters,
         changePage,
+        getAnimalsLanding,
       }}
     >
       {children}

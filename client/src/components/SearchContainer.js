@@ -24,37 +24,40 @@ const SearchContainer = () => {
   };
   return (
     <Wrapper>
-      <form className='form'>
-        <h4>Wyszukiwarka</h4>
-        <div className='form-center'>
-          <FormRow
-            type='text'
-            name='city'
-            value={city}
-            labelText={'Miasto'}
-            handleChange={handleSearch}
-          />
-          <FormRowSelect
-            labelText={'Województwo'}
-            name='searchProvince'
-            value={searchProvince}
-            handleChange={handleSearch}
-            list={['Wszystkie', ...provinceOptions]}
-          />
-          <FormRowSelect
-            labelText={'Sortuj'}
-            name='sort'
-            value={sort}
-            handleChange={handleSearch}
-            list={sortOptions}
-          />
-          <button
-            className='btn btn-block btn-danger'
-            disabled={isLoading}
-            onClick={handleSubmit}
-          >
-            Wyczyść
-          </button>
+      <form className='form '>
+        <div className='cont'>
+          <h4>Wyszukiwarka</h4>
+          <div className='form-center'>
+            <FormRow
+              type='text'
+              name='city'
+              value={city}
+              labelText={'Miasto'}
+              handleChange={handleSearch}
+            />
+            <FormRowSelect
+              labelText={'Województwo'}
+              name='searchProvince'
+              value={searchProvince}
+              handleChange={handleSearch}
+              list={['Wszystkie', ...provinceOptions]}
+            />
+            <FormRowSelect
+              labelText={'Sortuj'}
+              name='sort'
+              value={sort}
+              handleChange={handleSearch}
+              list={sortOptions}
+            />
+            <div className='visible'></div>
+            <button
+              className='btn btn-block btn-danger'
+              disabled={isLoading}
+              onClick={handleSubmit}
+            >
+              Wyczyść
+            </button>
+          </div>
         </div>
       </form>
     </Wrapper>
