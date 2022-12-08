@@ -76,5 +76,45 @@ const Wrapper = styled.nav`
     display: flex;
     gap: 0 0.5rem;
   }
+  .hamburger {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    display: none;
+    color: white;
+  }
+  .hamdiv {
+    width: 100%;
+    background-color: #00aa00;
+    text-align: center;
+    display: none;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    -webkit-box-shadow: inset 0px 22px 32px -37px rgba(66, 68, 90, 1);
+    -moz-box-shadow: inset 0px 22px 32px -37px rgba(66, 68, 90, 1);
+    box-shadow: inset 0px 22px 32px -37px rgba(66, 68, 90, 1);
+  }
+  .hamplace {
+    color: white;
+  }
+  .hamicon {
+    cursor: pointer;
+  }
+
+  @media screen and (width<940px) {
+    .hamburger {
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 40px;
+      padding-bottom: 30px;
+      font-size: 28px;
+    }
+    .content {
+      display: none;
+    }
+    .hamdiv {
+      display: block;
+    }
+  }
 `;
 export default Wrapper;

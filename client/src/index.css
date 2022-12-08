@@ -357,14 +357,15 @@ ul {
 
 .logo {
   width: 350px;
-  height: 100px;
+  height: 98px;
   line-height: 1.25;
 }
 .logoImg {
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
   float: left;
-  padding-top: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .logoText1 {
@@ -388,6 +389,24 @@ ul {
 
 .paddingTop120 {
   padding-top: 120px;
+}
+@media screen and (width<940px) {
+  .logo {
+    width: 250px;
+  }
+  .logoImg {
+    width: 60px;
+    height: 60px;
+    margin-top: 20px;
+  }
+
+  .logoText1 {
+    padding-top: 20px;
+    font-size: 22px;
+  }
+  .logoText2 {
+    font-size: 22px;
+  }
 }
 
 /* html::-webkit-scrollbar {
