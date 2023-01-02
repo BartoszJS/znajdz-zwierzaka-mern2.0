@@ -1,11 +1,11 @@
-import React from 'react';
-import moment from 'moment';
-import { Link } from 'react-router-dom';
-import { useAppContext } from '../context/appContext';
-import Wrapper from '../assets/wrappers/Animal';
-import AnimalInfo from './AnimalInfo';
-import { FaLocationArrow, FaCity, FaCalendarAlt } from 'react-icons/fa';
-import { GiPoland } from 'react-icons/gi';
+import React from "react";
+import moment from "moment";
+import { Link } from "react-router-dom";
+import { useAppContext } from "../context/appContext";
+import Wrapper from "../assets/wrappers/Animal";
+import AnimalInfo from "./AnimalInfo";
+import { FaLocationArrow, FaCity, FaCalendarAlt } from "react-icons/fa";
+import { GiPoland } from "react-icons/gi";
 
 const Animal = ({
   _id,
@@ -22,8 +22,8 @@ const Animal = ({
 
   let dateOfCreate = moment(createdAt);
   let dateOfLossNice = moment(dateOfLoss);
-  dateOfCreate = dateOfCreate.format('ll');
-  dateOfLossNice = dateOfLossNice.format('ll');
+  dateOfCreate = dateOfCreate.format("ll");
+  dateOfLossNice = dateOfLossNice.format("ll");
   return (
     <Wrapper>
       <header>

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Wrapper = styled.article`
   background: var(--white);
@@ -79,6 +79,18 @@ const Wrapper = styled.article`
     @media (min-width: 1120px) {
       grid-template-columns: 1fr 1fr;
     }
+  }
+  .content-modal {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+  .content-modal-inside {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
   }
 
   .status {

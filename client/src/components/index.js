@@ -1,16 +1,17 @@
-import Logo from './Logo.js';
-import LogoGreen from './LogoGreen.js';
-import Header from './Header.js';
-import FormRow from './FormRow.js';
-import Alert from './Alert.js';
-import FormRowSelect from './FormRowSelect.js';
-import ProfileEdit from '../components/ProfileEdit.js';
-import Profile from '../components/Profile.js';
-import SearchContainer from './SearchContainer.js';
-import AnimalsContainer from './AnimalsContainer.js';
-import UsersAnimals from './UsersAnimals.js';
-import SingleAnimal from './SingleAnimal.js';
-import AnimalsLanding from './AnimalsLanding.js';
+import Logo from "./Logo.jsx";
+import LogoGreen from "./LogoGreen.jsx";
+import Header from "./Header.jsx";
+import FormRow from "./FormRow.jsx";
+import Alert from "./Alert.jsx";
+import FormRowSelect from "./FormRowSelect.jsx";
+import ProfileEdit from "../components/ProfileEdit.jsx";
+import Profile from "../components/Profile.jsx";
+import SearchContainer from "./SearchContainer.jsx";
+import AnimalsContainer from "./AnimalsContainer.jsx";
+import UsersAnimals from "./UsersAnimals.jsx";
+import SingleAnimal from "./SingleAnimal.jsx";
+import AnimalsLanding from "./AnimalsLanding.jsx";
+import Modal from "./Modal.jsx";
 
 export {
   Logo,
@@ -26,4 +27,5 @@ export {
   UsersAnimals,
   SingleAnimal,
   AnimalsLanding,
+  Modal,
 };

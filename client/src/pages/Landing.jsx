@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import Wrapper from '../assets/wrappers/LandingPage.js';
-import { FaArrowDown } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-import AnimalsLanding from '../components/AnimalsLanding.js';
+import React, { useEffect } from "react";
+import Wrapper from "../assets/wrappers/LandingPage.js";
+import { FaArrowDown } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { AnimalsLanding } from "../components";
 
 const Landing = () => {
   // const fetchData = async () => {

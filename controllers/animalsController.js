@@ -1,16 +1,16 @@
-import { StatusCodes } from 'http-status-codes';
-import Animal from '../models/Animal.js';
+import { StatusCodes } from "http-status-codes";
+import Animal from "../models/Animal.js";
 import {
   BadRequestError,
   NotFoundError,
   UnAuthenticatedError,
-} from '../errors/index.js';
-import checkPermissions from '../utils/checkPermissions.js';
+} from "../errors/index.js";
+import checkPermissions from "../utils/checkPermissions.js";
 
 const createAnimal = async (req, res) => {
   const { name, rase } = req.body;
   if (!name || !rase) {
-    throw new BadRequestError('Wprowadź wszystkie dane(a-c)');
+    throw new BadRequestError("Wprowadź wszystkie dane(a-c)");
   }
   req.body.createdBy = req.user.userId;
   const animal = await Animal.create(req.body);
@@ -20,25 +20,25 @@ const getAllAnimals = async (req, res) => {
   const { city, sort, province } = req.query;
 
   const queryObject = {};
-  if (province && province !== 'Wszystkie') {
+  if (province && province !== "Wszystkie") {
     queryObject.province = province;
   }
 
   if (city) {
-    queryObject.city = { $regex: city, $options: 'i' };
+    queryObject.city = { $regex: city, $options: "i" };
   }
 
   let result = Animal.find(queryObject);
 
-  if (sort === 'Najnowsze') {
-    result = result.sort('-createdAt');
+  if (sort === "Najnowsze") {
+    result = result.sort("-createdAt");
   }
-  if (sort === 'Najstarsze') {
-    result = result.sort('createdAt');
+  if (sort === "Najstarsze") {
+    result = result.sort("createdAt");
   }
 
   const page = Number(req.query.page) || 1;
-  const limit = Number(req.query.limit) || 4;
+  const limit = Number(req.query.limit) || 6;
   const skip = (page - 1) * limit;
   result = result.skip(skip).limit(limit);
 
@@ -54,7 +54,7 @@ const getAnimalsLanding = async (req, res) => {
   const queryObject = {};
   let result = Animal.find(queryObject);
 
-  result = result.sort('-createdAt');
+  result = result.sort("-createdAt");
   //animals = animals.sort('-createdAt');
 
   result = result.limit(6);
@@ -86,7 +86,7 @@ const updateAnimal = async (req, res) => {
 
   const { name, rase } = req.body;
   if (!name || !rase) {
-    throw new BadRequestError('Wprowadź wszystkie dane(a-c)');
+    throw new BadRequestError("Wprowadź wszystkie dane(a-c)");
   }
   const animal = await Animal.findOne({ _id: animalId });
 
@@ -118,7 +118,7 @@ const deleteAnimal = async (req, res) => {
   checkPermissions(req.user, animal.createdBy);
 
   await animal.remove();
-  res.status(StatusCodes.OK).json({ msg: 'Zwierze usunięte' });
+  res.status(StatusCodes.OK).json({ msg: "Zwierze usunięte" });
 };
 
 export {

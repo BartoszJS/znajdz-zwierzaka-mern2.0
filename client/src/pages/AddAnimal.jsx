@@ -1,8 +1,8 @@
-import axios from 'axios';
-import React, { useState } from 'react';
-import Wrapper from '../assets/wrappers/DashboardFormPage';
-import { FormRow, FormRowSelect, Alert } from '../components';
-import { useAppContext } from '../context/appContext';
+import axios from "axios";
+import React, { useState } from "react";
+import Wrapper from "../assets/wrappers/DashboardFormPage";
+import { FormRow, FormRowSelect, Alert } from "../components";
+import { useAppContext } from "../context/appContext";
 
 const AddAnimal = () => {
   const [imageValue, setImageValue] = useState(null);
@@ -53,10 +53,10 @@ const AddAnimal = () => {
   const fileSelectedHandler = async (e) => {
     e.preventDefault();
     let imageValue;
-    const url = '/api/v1/animals';
+    const url = "/api/v1/animals";
     const imageFile = e.target.files[0];
     const formData = new FormData();
-    formData.append('image', imageFile);
+    formData.append("image", imageFile);
 
     try {
       const {
@@ -65,7 +65,7 @@ const AddAnimal = () => {
         },
       } = await axios.post(`${url}/uploads`, formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          "Content-Type": "multipart/form-data",
         },
       });
 
@@ -74,14 +74,14 @@ const AddAnimal = () => {
       console.log(imageValue);
       return false;
     } catch (error) {
-      console.log('aaaaa');
+      console.log("aaaaa");
     }
   };
 
   return (
     <Wrapper>
       <div className='cont'>
-        <h3>{isEditing ? 'Edytuj zwierzaka' : 'Dodaj zwierzaka'}</h3>
+        <h3>{isEditing ? "Edytuj zwierzaka" : "Dodaj zwierzaka"}</h3>
         {showAlert && <Alert />}
         <form>
           <div className='form'>
@@ -121,7 +121,7 @@ const AddAnimal = () => {
               labelText='Data zaginięcia'
               handleChange={handleAnimalInput}
             />
-            <FormRow
+            {/* <FormRow
               style={{ backgroundColor: 'red' }}
               type='file'
               labelText='Dodaj zdjęcie'
@@ -129,15 +129,15 @@ const AddAnimal = () => {
               value={image}
               accept='image/*'
               handleChange={handleAnimalPhoto}
-            />
+            /> */}
             {/* <input type='file' onChange={fileSelectedHandler} /> */}
-            {/* <FormRow
+            <FormRow
               type='text'
               name='image'
               value={image}
               labelText='Zdjęcie zwierzaka'
               handleChange={handleAnimalInput}
-            /> */}
+            />
           </div>
           <div>
             <label htmlFor='description' className='form-label'>
@@ -160,7 +160,7 @@ const AddAnimal = () => {
               onClick={handleSubmit}
               disabled={isLoading}
             >
-              {isEditing ? 'Edytuj' : 'Dodaj'}
+              {isEditing ? "Edytuj" : "Dodaj"}
             </button>
             <button
               className='btn btn-block clear-btn'

@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import moment from 'moment';
-import { Link, useParams } from 'react-router-dom';
-import { useAppContext } from '../context/appContext';
-import Wrapper from '../assets/wrappers/SingleAnimal';
-import AnimalInfo from './AnimalInfo';
-import { FaLocationArrow, FaCity, FaCalendarAlt } from 'react-icons/fa';
-import { GiPoland } from 'react-icons/gi';
-import Loading from './Loading';
+import React, { useEffect, useState } from "react";
+import moment from "moment";
+import { Link, useParams } from "react-router-dom";
+import { useAppContext } from "../context/appContext";
+import Wrapper from "../assets/wrappers/SingleAnimal";
+import AnimalInfo from "./AnimalInfo";
+import { FaLocationArrow, FaCity, FaCalendarAlt } from "react-icons/fa";
+import { GiPoland } from "react-icons/gi";
+import Loading from "./Loading";
+import Modal from "./Modal.jsx";
 
-const SingleAnimal = ({}) => {
+const SingleAnimal = () => {
   const params = useParams();
   const [flag, setFlag] = useState(false);
+  const [open, setOpen] = useState("Closed");
 
   const { getAnimal, isLoading, animal, setEditAnimal, deleteAnimal } =
     useAppContext();
@@ -59,14 +61,22 @@ const SingleAnimal = ({}) => {
                 />
                 <AnimalInfo
                   icon={<FaCalendarAlt />}
-                  text={moment(animal[0].createdAt).format('ll')}
+                  text={moment(animal[0].createdAt).format("ll")}
                   labelText='Data dodania:'
                 />
                 <AnimalInfo
                   icon={<FaCalendarAlt />}
-                  text={moment(animal[0].dateOfLoss).format('ll')}
+                  text={moment(animal[0].dateOfLoss).format("ll")}
                   labelText='Data zaginięcia:'
                 />
+              </div>
+            </div>
+            <div className='content'>
+              <div className='content-modal-inside'>
+                <div className='content-modal'>
+                  Widziałeś/aś to zwierzę?
+                  <Modal />
+                </div>
               </div>
             </div>
           </div>

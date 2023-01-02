@@ -1,10 +1,10 @@
-import AddAnimal from './AddAnimal.js';
-import Error from './Error.js';
-import GetAllAnimals from './GetAllAnimals.js';
-import Landing from './Landing.js';
-import Profile from '../components/Profile.js';
-import ProtectedRoute from './ProtectedRoute.js';
-import Register from './Register.js';
+import AddAnimal from "./AddAnimal.jsx";
+import Error from "./Error.jsx";
+import GetAllAnimals from "./GetAllAnimals.jsx";
+import Landing from "./Landing.jsx";
+import Profile from "../components/Profile.jsx";
+import ProtectedRoute from "./ProtectedRoute.jsx";
+import Register from "./Register.jsx";
 
 export {
   Error,

@@ -19,13 +19,13 @@ const Wrapper = styled.section`
     height: 40px;
     font-weight: 700;
     font-size: 1.25rem;
-    color: var(--primary-500);
+    color: white;
     transition: var(--transition);
     border-radius: var(--borderRadius);
     cursor: pointer;
   }
   .active {
-    background: var(--primary-500);
+    background: var(--primary-800);
     color: var(--white);
   }
   .prev-btn,
