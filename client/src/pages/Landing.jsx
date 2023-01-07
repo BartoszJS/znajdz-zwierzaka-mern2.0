@@ -29,13 +29,16 @@ const Landing = () => {
               W przypadku zaginięcia zwierzęcia, <br /> możesz dodać zwierzę na
               naszą stronę.
             </p>
-            <Link to='/register'>
-              <button className='btn btn-glowna'> ZGŁO ZAGINIĘCIE</button>
+            <Link aria-label='zglos' to='/register'>
+              <button aria-label='zglos' className='btn btn-glowna'>
+                {" "}
+                ZGŁOŚ ZAGINIĘCIE
+              </button>
             </Link>
           </div>
           <div className='arrow-div'>
-            <Link to='/register'>
-              <button type='button' className='btn-arrow-down'>
+            <Link aria-label='down' to='/register'>
+              <button aria-label='down' className='btn-arrow-down'>
                 <FaArrowDown />
               </button>
             </Link>

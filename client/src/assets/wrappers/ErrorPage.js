@@ -19,7 +19,7 @@ const Wrapper = styled.main`
     color: var(--grey-500);
   }
   a {
-    color: #00aa00;
+    color: #00b300;
     text-decoration: underline;
     text-transform: capitalize;
   }

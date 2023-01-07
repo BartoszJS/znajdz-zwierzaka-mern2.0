@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import Animal from './Animal';
-import { useAppContext } from '../context/appContext';
-import Loading from './Loading';
-import Wrapper from '../assets/wrappers/AnimalContainer';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import Animal from "./Animal";
+import { useAppContext } from "../context/appContext";
+import Loading from "./Loading";
+import Wrapper from "../assets/wrappers/AnimalContainer";
+import { Link } from "react-router-dom";
 
 const AnimalsLanding = () => {
   const { getAnimalsLanding, animals, isLoading, totalAnimals } =
@@ -21,7 +21,7 @@ const AnimalsLanding = () => {
     <Wrapper>
       {totalAnimals !== 0 ? (
         <div className='cont'>
-          <h5>Najnowsze zwięrzęta: </h5>
+          <h3>Najnowsze zwięrzęta: </h3>
           <div className='jobs'>
             {animals.map((animal) => {
               return (

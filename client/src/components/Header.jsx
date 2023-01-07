@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import Logo from './Logo';
-import { motion } from 'framer-motion';
-import { Link, useNavigate } from 'react-router-dom';
-import { GiHamburgerMenu } from 'react-icons/gi';
-import Wrapper from '../assets/wrappers/Header.js';
-import { useAppContext } from '../context/appContext.js';
+import React, { useState } from "react";
+import Logo from "./Logo";
+import { motion } from "framer-motion";
+import { Link, useNavigate } from "react-router-dom";
+import { GiHamburgerMenu } from "react-icons/gi";
+import Wrapper from "../assets/wrappers/Header.js";
+import { useAppContext } from "../context/appContext.js";
 import {
   FaUserCircle,
   FaCaretDown,
   FaPlusCircle,
   FaSearch,
   FaSignOutAlt,
-} from 'react-icons/fa';
-import { RiLoginCircleFill } from 'react-icons/ri';
+} from "react-icons/fa";
+import { RiLoginCircleFill } from "react-icons/ri";
 
 const variants = {
   open: { opacity: 1, x: 0 },
-  closed: { opacity: 1, x: '+110%' },
+  closed: { opacity: 1, x: "+110%" },
 };
 
 const Header = () => {
@@ -27,18 +27,20 @@ const Header = () => {
 
   const logoutButton = () => {
     logoutUser();
-    navigate('/');
+    navigate("/");
   };
 
   return (
     <Wrapper>
       <div className='header'>
         <div className='cont'>
-          <li className='logo'>
-            <Link to='/'>
-              <Logo />
-            </Link>
-          </li>
+          <ul>
+            <li className='logo'>
+              <Link to='/'>
+                <Logo />
+              </Link>
+            </li>
+          </ul>
           <div className='content'>
             <ul>
               <div className='navbars'>
@@ -71,7 +73,7 @@ const Header = () => {
                       </div>
                       <div
                         className={
-                          toggleProfile ? 'dropdown show-dropdown' : 'dropdown'
+                          toggleProfile ? "dropdown show-dropdown" : "dropdown"
                         }
                       >
                         <button
@@ -103,7 +105,7 @@ const Header = () => {
           </div>
         </div>
 
-        <motion.nav animate={isOpen ? 'open' : 'closed'} variants={variants}>
+        <motion.nav animate={isOpen ? "open" : "closed"} variants={variants}>
           {isOpen && (
             <div>
               <div className='hamdiv'>

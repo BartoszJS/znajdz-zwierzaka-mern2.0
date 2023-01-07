@@ -22,12 +22,15 @@ const Wrapper = styled.main`
   .znajdzText1 {
     font-size: 50px;
     font-weight: 500;
+    color: black;
   }
   .znajdzText2 {
     font-size: 22px;
     text-shadow: none;
     font-weight: 400;
     color: white;
+    color: black;
+    text-shadow: 1px 1px 5px #ffffff;
   }
   .main-cont {
     text-align: left;
@@ -44,8 +47,8 @@ const Wrapper = styled.main`
     bottom: 0;
   }
   .btn-arrow-down {
-    color: #fff;
-    background: #009500;
+    color: black;
+    background: #00b300;
     display: inline-block;
     width: min-content;
     white-space: nowrap;

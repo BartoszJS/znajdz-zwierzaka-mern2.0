@@ -1,10 +1,10 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Wrapper = styled.nav`
   .header {
     margin: 0 auto;
     height: 100px;
-    background-color: #00aa00;
+    background-color: #00b300;
     position: fixed;
     width: 100%;
     opacity: 0.9;
@@ -15,7 +15,7 @@ const Wrapper = styled.nav`
     display: inline;
     width: 200px;
     cursor: pointer;
-    color: var(--white);
+    color: black;
   }
   .header .logo {
     float: left;
@@ -23,16 +23,16 @@ const Wrapper = styled.nav`
   .header .navbars {
     float: right;
     padding-top: 35px;
-    color: white;
+    color: black;
   }
   .place {
     gap: 0 0.5rem;
-    color: white;
+    color: black;
     padding-right: 50px;
   }
   .profile_button {
     gap: 0 0.5rem;
-    color: white;
+    color: black;
     display: flex;
   }
   .btn-container {
@@ -69,7 +69,7 @@ const Wrapper = styled.nav`
   .dropdown-btn {
     background: transparent;
     border-color: transparent;
-    color: white;
+    color: black;
     letter-spacing: var(--letterSpacing);
     text-transform: capitalize;
     cursor: pointer;
@@ -81,11 +81,11 @@ const Wrapper = styled.nav`
     justify-content: flex-end;
     align-items: center;
     display: none;
-    color: white;
+    color: black;
   }
   .hamdiv {
     width: 100%;
-    background-color: #00aa00;
+    background-color: #00b300;
     text-align: center;
     display: none;
     padding-bottom: 5px;
@@ -95,7 +95,7 @@ const Wrapper = styled.nav`
     box-shadow: inset 0px 22px 32px -37px rgba(66, 68, 90, 1);
   }
   .hamplace {
-    color: white;
+    color: black;
   }
   .hamicon {
     cursor: pointer;
