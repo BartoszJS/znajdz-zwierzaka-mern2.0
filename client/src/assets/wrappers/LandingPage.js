@@ -22,14 +22,13 @@ const Wrapper = styled.main`
   .znajdzText1 {
     font-size: 50px;
     font-weight: 500;
-    color: black;
+    color: white;
   }
   .znajdzText2 {
     font-size: 22px;
     text-shadow: none;
     font-weight: 400;
     color: white;
-    color: black;
     text-shadow: 1px 1px 5px #ffffff;
   }
   .main-cont {

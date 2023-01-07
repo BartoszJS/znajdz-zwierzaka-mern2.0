@@ -34,68 +34,57 @@ const Header = () => {
     <Wrapper>
       <div className='header'>
         <div className='cont'>
-          <ul>
-            <li className='logo'>
-              <Link to='/'>
-                <Logo />
-              </Link>
-            </li>
-          </ul>
+          <div className='logo'>
+            <Link to='/'>
+              <Logo />
+            </Link>
+          </div>
           <div className='content'>
-            <ul>
-              <div className='navbars'>
-                <li>
-                  <Link className='place' to='/dodaj-zwierze'>
-                    <FaPlusCircle /> DODAJ
-                  </Link>
-                </li>
-                <li>
-                  <Link className='place' to='/wszystkie-zwierzaki'>
-                    <FaSearch /> ZAGINIONE
-                  </Link>
-                </li>
+            <div className='navbars'>
+              <Link className='place' to='/dodaj-zwierze'>
+                <FaPlusCircle /> DODAJ
+              </Link>
 
-                {user ? (
-                  <li>
-                    <div className='btn-container'>
-                      <div className='btn' type='button'>
-                        <Link className='profile_button' to='/profile'>
-                          <FaUserCircle />
-                          {user.name}
-                        </Link>
-                        <button
-                          className='btn'
-                          type='button'
-                          onClick={showToggleProfile}
-                        >
-                          <FaCaretDown />
-                        </button>
-                      </div>
-                      <div
-                        className={
-                          toggleProfile ? "dropdown show-dropdown" : "dropdown"
-                        }
-                      >
-                        <button
-                          type='button'
-                          className='dropdown-btn'
-                          onClick={logoutButton}
-                        >
-                          <FaSignOutAlt />
-                          Wyloguj
-                        </button>
-                      </div>
-                    </div>
-                  </li>
-                ) : (
-                  <li>
-                    <Link className='place' to='/register'>
-                      <RiLoginCircleFill /> LOGOWANIE
+              <Link className='place' to='/wszystkie-zwierzaki'>
+                <FaSearch /> ZAGINIONE
+              </Link>
+
+              {user ? (
+                <div className='btn-container'>
+                  <div className='btn' type='button'>
+                    <Link className='profile_button' to='/profile'>
+                      <FaUserCircle />
+                      {user.name}
                     </Link>
-                  </li>
-                )}
-              </div>
-            </ul>
+                    <button
+                      className='btn'
+                      type='button'
+                      onClick={showToggleProfile}
+                    >
+                      <FaCaretDown />
+                    </button>
+                  </div>
+                  <div
+                    className={
+                      toggleProfile ? "dropdown show-dropdown" : "dropdown"
+                    }
+                  >
+                    <button
+                      type='button'
+                      className='dropdown-btn'
+                      onClick={logoutButton}
+                    >
+                      <FaSignOutAlt />
+                      Wyloguj
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <Link className='place' to='/register'>
+                  <RiLoginCircleFill /> LOGOWANIE
+                </Link>
+              )}
+            </div>
           </div>
           <div className='hamburger'>
             <GiHamburgerMenu

@@ -31,7 +31,7 @@ const Animal = ({
           <img className='img' src={image} alt='' />
         </div>
         <div className='info'>
-          <h5>{name}</h5>
+          <h4>{name}</h4>
           <p>{rase}</p>
         </div>
       </header>

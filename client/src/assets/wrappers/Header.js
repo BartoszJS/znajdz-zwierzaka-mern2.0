@@ -11,8 +11,7 @@ const Wrapper = styled.nav`
     z-index: 1;
   }
 
-  .header li {
-    display: inline;
+  .header-content {
     width: 200px;
     cursor: pointer;
     color: black;
