@@ -30,12 +30,12 @@ const Landing = () => {
               naszą stronę.
             </p>
             <Link to='/register'>
-              <button className='btn btn-glowna'> ZGŁOŚ ZAGINIĘCIE</button>
+              <button className='btn btn-glowna'> ZGŁO ZAGINIĘCIE</button>
             </Link>
           </div>
           <div className='arrow-div'>
             <Link to='/register'>
-              <button className='btn-arrow-down'>
+              <button type='button' className='btn-arrow-down'>
                 <FaArrowDown />
               </button>
             </Link>
