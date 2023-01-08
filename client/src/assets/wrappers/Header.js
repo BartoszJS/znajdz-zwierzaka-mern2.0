@@ -27,7 +27,7 @@ const Wrapper = styled.nav`
   .place {
     gap: 0 0.5rem;
     color: black;
-    padding-right: 50px;
+    padding-right: 30px;
   }
   .place:hover {
     color: white;
