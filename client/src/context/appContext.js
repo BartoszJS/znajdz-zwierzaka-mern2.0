@@ -1,7 +1,7 @@
-import React, { useReducer, useContext } from 'react';
-import axios from 'axios';
+import React, { useReducer, useContext } from "react";
+import axios from "axios";
 
-import reducer from './reducer';
+import reducer from "./reducer";
 import {
   DISPLAY_ALERT,
   CLEAR_ALERT,
@@ -38,56 +38,57 @@ import {
   CHANGE_PAGE,
   GET_ANIMAL_LANDING_BEGIN,
   GET_ANIMAL_LANDING_SUCCESS,
-} from './actions';
+} from "./actions";
 
-const token = localStorage.getItem('token');
-const user = localStorage.getItem('user');
+const token = localStorage.getItem("token");
+const user = localStorage.getItem("user");
 
 const initialState = {
   isLoading: false,
   showAlert: false,
-  alertText: '',
-  alertType: '',
+  alertText: "",
+  alertType: "",
   user: user ? JSON.parse(user) : null,
   token: token,
   toggleProfile: false,
-  editAnimalId: '',
+  editAnimalId: "",
   isEditing: false,
-  description: '',
-  name: '',
-  rase: '',
-  _id: '',
+  description: "",
+  animalUser: "",
+  name: "",
+  rase: "",
+  _id: "",
   provinceOptions: [
-    'dolnośląskie',
-    'kujawsko-pomorskie',
-    'lubelskie',
-    'lubuskie',
-    'łódzkie',
-    'małopolskie',
-    'mazowieckie',
-    'opolskie',
-    'podkarpackie',
-    'podlaskie',
-    'pomorskie',
-    'śląskie',
-    'świętokrzyskie',
-    'warmińsko-mazurskie',
-    'wielkopolskie',
-    'zachodniopomorskie',
+    "dolnośląskie",
+    "kujawsko-pomorskie",
+    "lubelskie",
+    "lubuskie",
+    "łódzkie",
+    "małopolskie",
+    "mazowieckie",
+    "opolskie",
+    "podkarpackie",
+    "podlaskie",
+    "pomorskie",
+    "śląskie",
+    "świętokrzyskie",
+    "warmińsko-mazurskie",
+    "wielkopolskie",
+    "zachodniopomorskie",
   ],
-  province: 'mazowieckie',
-  city: '',
-  dateOfLoss: '',
-  image: '',
+  province: "mazowieckie",
+  city: "",
+  dateOfLoss: "",
+  image: "",
   animals: [],
   animal: {},
   totalAnimals: 0,
   numOfPages: 1,
   page: 1,
 
-  searchProvince: 'Wszystkie',
-  sort: 'Najnowsze',
-  sortOptions: ['Najnowsze', 'Najstarsze'],
+  searchProvince: "Wszystkie",
+  sort: "Najnowsze",
+  sortOptions: ["Najnowsze", "Najstarsze"],
 };
 
 const AppContext = React.createContext();
@@ -96,13 +97,13 @@ const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const authFetch = axios.create({
-    baseURL: '/api/v1',
+    baseURL: "/api/v1",
   });
 
   //request
   authFetch.interceptors.request.use(
     (config) => {
-      config.headers['Authorization'] = `Bearer ${state.token}`;
+      config.headers["Authorization"] = `Bearer ${state.token}`;
       return config;
     },
     (error) => {
@@ -145,8 +146,8 @@ const AppProvider = ({ children }) => {
   };
 
   const addUserToLocalStorage = ({ user, token }) => {
-    localStorage.setItem('user', JSON.stringify(user));
-    localStorage.setItem('token', token);
+    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("token", token);
   };
 
   const showToggleProfile = () => {
@@ -154,14 +155,14 @@ const AppProvider = ({ children }) => {
   };
 
   const removeUserFromLocalStorage = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
   };
 
   const registerUser = async (currentUser) => {
     dispatch({ type: REGISTER_USER_BEGIN });
     try {
-      const response = await axios.post('/api/v1/auth/register', currentUser);
+      const response = await axios.post("/api/v1/auth/register", currentUser);
       //console.log(response);
       const { user, token } = response.data;
       dispatch({ type: REGISTER_USER_SUCCESS, payload: { user, token } });
@@ -179,7 +180,7 @@ const AppProvider = ({ children }) => {
   const loginUser = async (currentUser) => {
     dispatch({ type: LOGIN_USER_BEGIN });
     try {
-      const { data } = await axios.post('/api/v1/auth/login', currentUser);
+      const { data } = await axios.post("/api/v1/auth/login", currentUser);
       const { user, token } = data;
       dispatch({ type: LOGIN_USER_SUCCESS, payload: { user, token } });
       addUserToLocalStorage({ user, token });
@@ -194,7 +195,7 @@ const AppProvider = ({ children }) => {
   const updateUser = async (currentUser) => {
     dispatch({ type: UPDATE_USER_BEGIN });
     try {
-      const { data } = await authFetch.patch('/auth/updateUser', currentUser);
+      const { data } = await authFetch.patch("/auth/updateUser", currentUser);
 
       const { user, token } = data;
 
@@ -316,7 +317,7 @@ const AppProvider = ({ children }) => {
     try {
       const { name, rase, description, province, city, dateOfLoss, image } =
         state;
-      await authFetch.post('/animals', {
+      await authFetch.post("/animals", {
         name,
         rase,
         description,
@@ -341,10 +342,10 @@ const AppProvider = ({ children }) => {
     dispatch({ type: UPLOAD_PHOTO_BEGIN });
 
     let imageValue;
-    const url = '/animals';
+    const url = "/animals";
     const imageFile = e.target.files[0];
     const formData = new FormData();
-    formData.append('image', imageFile);
+    formData.append("image", imageFile);
 
     try {
       const {
@@ -353,7 +354,7 @@ const AppProvider = ({ children }) => {
         },
       } = await authFetch.post(`${url}/uploads`, formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          "Content-Type": "multipart/form-data",
         },
       });
 
@@ -376,10 +377,10 @@ const AppProvider = ({ children }) => {
     dispatch({ type: GET_ONEANIMAL_BEGIN });
     try {
       const { data } = await authFetch.get(url);
-      const { animal } = data;
+      const { animal, animalUser } = data;
       dispatch({
         type: GET_ONEANIMAL_SUCCESS,
-        payload: { animal },
+        payload: { animal, animalUser },
       });
     } catch (error) {
       console.log(error.response);

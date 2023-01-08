@@ -3,12 +3,11 @@ import styled from "styled-components";
 const Wrapper = styled.section`
   .modal {
     font-size: 20px;
-    border: 1px solid black;
   }
   .modal > .header {
     width: 100%;
     border-bottom: 1px solid gray;
-    font-size: 18px;
+    font-size: 24px;
     text-align: center;
     padding: 5px;
   }
@@ -26,14 +25,15 @@ const Wrapper = styled.section`
     cursor: pointer;
     position: absolute;
     display: block;
-    padding: 2px 5px;
+    padding: 4px 0px;
     line-height: 20px;
-    right: -10px;
-    top: -10px;
-    font-size: 24px;
-    background: #ffffff;
-    border-radius: 18px;
-    border: 1px solid #cfcece;
+    right: 10px;
+    top: 16px;
+    font-size: 50px;
+    background: red;
+    color: white;
+    border-radius: 3px;
+    border: 0;
   }
 `;
 export default Wrapper;

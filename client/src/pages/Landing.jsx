@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Wrapper from "../assets/wrappers/LandingPage.js";
 import { FaArrowDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -26,10 +26,10 @@ const Landing = () => {
           <div className='main-content'>
             <h1 className='znajdzText1'>ZNAJDŹ ZWIERZAKA </h1>
             <p className='znajdzText2'>
-              W przypadku zaginięcia zwierzęcia, <br /> możesz dodać zwierzę na
-              naszą stronę.
+              W przypadku zaginięcia zwierzęcia, możesz dodać zwierzę na naszą
+              stronę.
             </p>
-            <Link aria-label='zglos' to='/register'>
+            <Link aria-label='zglos' to='/dodaj-zwierze'>
               <button aria-label='zglos' className='btn btn-glowna'>
                 {" "}
                 ZGŁOŚ ZAGINIĘCIE
@@ -37,14 +37,16 @@ const Landing = () => {
             </Link>
           </div>
           <div className='arrow-div'>
-            <Link aria-label='down' to='/register'>
-              <button aria-label='down' className='btn-arrow-down'>
+            <button aria-label='down' className='btn-arrow-down'>
+              <a href='#newest' className='yes'>
                 <FaArrowDown />
-              </button>
-            </Link>
+              </a>
+            </button>
           </div>
         </div>
       </div>
+      <div id='newest'></div>
+
       <AnimalsLanding />
     </Wrapper>
   );

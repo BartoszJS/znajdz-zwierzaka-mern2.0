@@ -8,7 +8,7 @@ const Wrapper = styled.article`
   box-shadow: var(--shadow-2);
   margin-bottom: 4rem;
 
-  header {
+  .singleanimal-top {
     padding: 1rem 1.5rem;
     border-bottom: 1px solid var(--grey-100);
     display: grid;
@@ -20,8 +20,6 @@ const Wrapper = styled.article`
     }
   }
   .info-div {
-    display: grid;
-    grid-template-rows: 1fr 3fr;
   }
 
   .img {
@@ -35,6 +33,20 @@ const Wrapper = styled.article`
     border-radius: var(--borderRadius);
 
     margin-right: 2rem;
+  }
+  @media screen and (max-width: 992px) {
+    .singleanimal-top {
+      grid-template-columns: 1fr;
+    }
+    .img {
+      width: 100%;
+      max-width: 500px;
+      height: 100%;
+      margin-bottom: 1rem;
+    }
+    .cont {
+      width: 100%;
+    }
   }
   .info {
     word-wrap: break-word;

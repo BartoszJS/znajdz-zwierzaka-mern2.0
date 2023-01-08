@@ -14,8 +14,14 @@ const SingleAnimal = () => {
   const [flag, setFlag] = useState(false);
   const [open, setOpen] = useState("Closed");
 
-  const { getAnimal, isLoading, animal, setEditAnimal, deleteAnimal } =
-    useAppContext();
+  const {
+    getAnimal,
+    isLoading,
+    animal,
+    animalUser,
+    setEditAnimal,
+    deleteAnimal,
+  } = useAppContext();
 
   useEffect(() => {
     getAnimal(params.id);
@@ -32,7 +38,7 @@ const SingleAnimal = () => {
       <Wrapper>
         {animal[0] && (
           <div className='cont'>
-            <header>
+            <div className='singleanimal-top'>
               <div className='img-div'>
                 <img className='img' src={animal[0].image} alt='' />
               </div>
@@ -46,7 +52,7 @@ const SingleAnimal = () => {
                   <p>{animal[0].description}</p>
                 </div>
               </div>
-            </header>
+            </div>
             <div className='content'>
               <div className='content-center'>
                 <AnimalInfo
@@ -75,7 +81,11 @@ const SingleAnimal = () => {
               <div className='content-modal-inside'>
                 <div className='content-modal'>
                   Widziałeś/aś to zwierzę?
-                  <Modal />
+                  <Modal
+                    name={animalUser[0].name}
+                    nr={animalUser[0].phoneNumber}
+                    email={animalUser[0].email}
+                  />
                 </div>
               </div>
             </div>

@@ -34,33 +34,33 @@ import {
   CHANGE_PAGE,
   GET_ANIMAL_LANDING_BEGIN,
   GET_ANIMAL_LANDING_SUCCESS,
-} from './actions';
+} from "./actions";
 
-import { initialState } from './appContext';
+import { initialState } from "./appContext";
 
 const reducer = (state, action) => {
   if (action.type === DISPLAY_ALERT) {
     return {
       ...state,
       showAlert: true,
-      alertType: 'danger',
-      alertText: 'Wprowadź wszystkie dane',
+      alertType: "danger",
+      alertText: "Wprowadź wszystkie dane",
     };
   }
   if (action.type === PROTECTED_ALERT) {
     return {
       ...state,
       showAlert: true,
-      alertType: 'danger',
-      alertText: 'Wymagane jest zalogowanie...',
+      alertType: "danger",
+      alertText: "Wymagane jest zalogowanie...",
     };
   }
   if (action.type === CLEAR_ALERT) {
     return {
       ...state,
       showAlert: false,
-      alertType: '',
-      alertText: '',
+      alertType: "",
+      alertText: "",
     };
   }
   if (action.type === REGISTER_USER_BEGIN) {
@@ -73,8 +73,8 @@ const reducer = (state, action) => {
       token: action.payload.token,
       user: action.payload.user,
       showAlert: true,
-      alertType: 'success',
-      alertText: 'Rejestracja pomyślna, trwa przekierowanie...',
+      alertType: "success",
+      alertText: "Rejestracja pomyślna, trwa przekierowanie...",
     };
   }
   if (action.type === REGISTER_USER_ERROR) {
@@ -82,7 +82,7 @@ const reducer = (state, action) => {
       ...state,
       isLoading: false,
       showAlert: true,
-      alertType: 'danger',
+      alertType: "danger",
       alertText: action.payload.msg,
     };
   }
@@ -97,8 +97,8 @@ const reducer = (state, action) => {
       token: action.payload.token,
       user: action.payload.user,
       showAlert: true,
-      alertType: 'success',
-      alertText: 'Trwa logowanie...',
+      alertType: "success",
+      alertText: "Trwa logowanie...",
     };
   }
   if (action.type === LOGIN_USER_ERROR) {
@@ -106,7 +106,7 @@ const reducer = (state, action) => {
       ...state,
       isLoading: false,
       showAlert: true,
-      alertType: 'danger',
+      alertType: "danger",
       alertText: action.payload.msg,
     };
   }
@@ -133,8 +133,8 @@ const reducer = (state, action) => {
       token: action.payload.token,
       user: action.payload.user,
       showAlert: true,
-      alertType: 'success',
-      alertText: 'Profil zaktualizowany...',
+      alertType: "success",
+      alertText: "Profil zaktualizowany...",
     };
   }
   if (action.type === UPDATE_USER_ERROR) {
@@ -142,7 +142,7 @@ const reducer = (state, action) => {
       ...state,
       isLoading: false,
       showAlert: true,
-      alertType: 'danger',
+      alertType: "danger",
       alertText: action.payload.msg,
     };
   }
@@ -155,15 +155,15 @@ const reducer = (state, action) => {
   }
   if (action.type === CLEAR_VALUES) {
     const initialState = {
-      editAnimalId: '',
+      editAnimalId: "",
       isEditing: false,
-      description: '',
-      name: '',
-      rase: '',
-      province: 'mazowieckie',
-      city: '',
-      dateOfLoss: '',
-      image: '',
+      description: "",
+      name: "",
+      rase: "",
+      province: "mazowieckie",
+      city: "",
+      dateOfLoss: "",
+      image: "",
     };
 
     return {
@@ -179,8 +179,8 @@ const reducer = (state, action) => {
       ...state,
       isLoading: false,
       showAlert: true,
-      alertType: 'success',
-      alertText: 'Zwierze zostało dodane',
+      alertType: "success",
+      alertText: "Zwierze zostało dodane",
     };
   }
   if (action.type === CREATE_ANIMAL_ERROR) {
@@ -188,7 +188,7 @@ const reducer = (state, action) => {
       ...state,
       isLoading: false,
       showAlert: true,
-      alertType: 'danger',
+      alertType: "danger",
       alertText: action.payload.msg,
     };
   }
@@ -214,8 +214,8 @@ const reducer = (state, action) => {
       ...state,
       isLoading: false,
       showAlert: true,
-      alertType: 'success',
-      alertText: 'Zwierze zostało dodane',
+      alertType: "success",
+      alertText: "Zwierze zostało dodane",
     };
   }
   if (action.type === UPLOAD_PHOTO_ERROR) {
@@ -223,7 +223,7 @@ const reducer = (state, action) => {
       ...state,
       isLoading: false,
       showAlert: true,
-      alertType: 'danger',
+      alertType: "danger",
       alertText: action.payload.msg,
     };
   }
@@ -236,6 +236,7 @@ const reducer = (state, action) => {
       ...state,
       isLoading: false,
       animal: action.payload.animal,
+      animalUser: action.payload.animalUser,
     };
   }
 
@@ -272,8 +273,8 @@ const reducer = (state, action) => {
       ...state,
       isLoading: false,
       showAlert: true,
-      alertType: 'success',
-      alertText: 'Edycja pomyślna',
+      alertType: "success",
+      alertText: "Edycja pomyślna",
     };
   }
   if (action.type === EDIT_ANIMAL_ERROR) {
@@ -281,16 +282,16 @@ const reducer = (state, action) => {
       ...state,
       isLoading: false,
       showAlert: true,
-      alertType: 'danger',
+      alertType: "danger",
       alertText: action.payload.msg,
     };
   }
   if (action.type === CLEAR_FILTERS) {
     return {
       ...state,
-      city: '',
-      searchProvince: 'Wszystkie',
-      sort: 'Najnowsze',
+      city: "",
+      searchProvince: "Wszystkie",
+      sort: "Najnowsze",
     };
   }
   if (action.type === CHANGE_PAGE) {

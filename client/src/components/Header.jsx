@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Logo from "./Logo";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
@@ -29,6 +29,9 @@ const Header = () => {
     logoutUser();
     navigate("/");
   };
+  useEffect(() => {
+    setIsOpen(false);
+  }, [window.location.href]);
 
   return (
     <Wrapper>

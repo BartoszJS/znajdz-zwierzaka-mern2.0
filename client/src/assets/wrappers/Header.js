@@ -29,6 +29,10 @@ const Wrapper = styled.nav`
     color: black;
     padding-right: 50px;
   }
+  .place:hover {
+    color: white;
+    transition: 0.2s;
+  }
   .profile_button {
     gap: 0 0.5rem;
     color: black;

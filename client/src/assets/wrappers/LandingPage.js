@@ -2,6 +2,12 @@ import styled from "styled-components";
 import backgroundBanner from "../images/dog1.jpg";
 
 const Wrapper = styled.main`
+  #newest {
+    padding-bottom: 40px;
+  }
+  .yes {
+    color: black;
+  }
   nav {
     margin: 0 auto;
     height: 100px;
@@ -30,6 +36,8 @@ const Wrapper = styled.main`
     font-weight: 400;
     color: white;
     text-shadow: 1px 1px 5px #ffffff;
+    width: 100%;
+    max-width: 450px;
   }
   .main-cont {
     text-align: left;
@@ -121,6 +129,19 @@ const Wrapper = styled.main`
     }
     .main-img {
       display: block;
+    }
+  }
+  @media (max-width: 992px) {
+    .main-content {
+      text-align: center;
+    }
+    .znajdzText1 {
+      font-size: 40px;
+    }
+    .znajdzText2 {
+      font-size: 20px;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 `;

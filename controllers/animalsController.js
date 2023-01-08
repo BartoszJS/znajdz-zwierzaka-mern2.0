@@ -1,5 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 import Animal from "../models/Animal.js";
+import User from "../models/User.js";
 import {
   BadRequestError,
   NotFoundError,
@@ -74,12 +75,12 @@ const getAllUserAnimals = async (req, res) => {
 const getAnimal = async (req, res) => {
   const { id: animalId } = req.params;
   const animal = await Animal.find({ _id: animalId });
-
+  const animalUser = await User.find({ _id: animal[0].createdBy });
   if (!animal) {
     throw new NotFoundError(`Brak zwierzęcia o takim id`);
   }
 
-  res.status(StatusCodes.OK).json({ animal });
+  res.status(StatusCodes.OK).json({ animal, animalUser });
 };
 const updateAnimal = async (req, res) => {
   const { id: animalId } = req.params;
