@@ -104,7 +104,7 @@ const Wrapper = styled.nav`
     cursor: pointer;
   }
 
-  @media screen and (width<992px) {
+  @media screen and (max-width: 992px) {
     .hamburger {
       display: flex;
       justify-content: flex-end;
