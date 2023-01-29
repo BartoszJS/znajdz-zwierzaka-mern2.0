@@ -52,6 +52,9 @@ const Wrapper = styled.main`
     width: 100%;
     position: absolute;
     bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .btn-arrow-down {
     color: black;
@@ -62,12 +65,11 @@ const Wrapper = styled.main`
     border: 1px solid transparent;
     border-radius: 5px;
     font-size: 24px;
-    line-height: 1.7;
+    padding-top: 5px;
     vertical-align: middle;
     text-transform: uppercase;
     box-shadow: var(--box-shadow);
     border-radius: 500px;
-    padding-top: 13px;
     font-size: 30px;
     width: 70px;
     height: 70px;
@@ -80,6 +82,10 @@ const Wrapper = styled.main`
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .btn-arrow-down:hover {
     color: #fff;

@@ -401,7 +401,7 @@ ul {
 .paddingTop120 {
   padding-top: 120px;
 }
-@media screen and (width<940px) {
+@media screen and (max-width: 992px) {
   .logo {
     width: 250px;
   }
