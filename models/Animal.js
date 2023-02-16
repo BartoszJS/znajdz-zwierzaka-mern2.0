@@ -1,10 +1,10 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const AnimalSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, 'Wprowadź imię'],
+      required: [true, "Wprowadź imię"],
       maxlenght: 20,
       trim: true,
     },
@@ -18,57 +18,57 @@ const AnimalSchema = new mongoose.Schema(
       type: String,
       required: [
         true,
-        'Wprowadź opis, może to byc kolor, znaki szczególne zwierzaka',
+        "Wprowadź opis, może to byc kolor, znaki szczególne zwierzaka",
       ],
       maxlenght: 500,
     },
     province: {
       type: String,
-      required: [true, 'Wybierz województwo'],
+      required: [true, "Wybierz województwo"],
       maxlenght: 30,
       enum: [
-        'dolnośląskie',
-        'kujawsko-pomorskie',
-        'lubelskie',
-        'lubuskie',
-        'łódzkie',
-        'małopolskie',
-        'mazowieckie',
-        'opolskie',
-        'podkarpackie',
-        'podlaskie',
-        'pomorskie',
-        'śląskie',
-        'świętokrzyskie',
-        'warmińsko-mazurskie',
-        'wielkopolskie',
-        'zachodniopomorskie',
+        "dolnośląskie",
+        "kujawsko-pomorskie",
+        "lubelskie",
+        "lubuskie",
+        "łódzkie",
+        "małopolskie",
+        "mazowieckie",
+        "opolskie",
+        "podkarpackie",
+        "podlaskie",
+        "pomorskie",
+        "śląskie",
+        "świętokrzyskie",
+        "warmińsko-mazurskie",
+        "wielkopolskie",
+        "zachodniopomorskie",
       ],
-      default: 'mazowieckie',
+      default: "mazowieckie",
     },
     city: {
       type: String,
-      required: [true, 'Wprowadź miasto'],
+      required: [true, "Wprowadź miasto"],
       maxlenght: 50,
       trim: true,
     },
     dateOfLoss: {
       type: Date,
-      required: [true, 'Wprowadź date zaginięcia'],
+      required: [true, "Wprowadź date zaginięcia"],
       maxlenght: 50,
       trim: true,
     },
     image: {
       type: String,
-      required: [true, 'Dodaj zdjęcie zwierzaka'],
+      required: [true, "Dodaj zdjęcie zwierzaka"],
     },
     createdBy: {
       type: mongoose.Types.ObjectId,
-      ref: 'User',
-      required: [true, 'Wprowadź użytkownika'],
+      ref: "User",
+      required: [true, "Wprowadź użytkownika"],
     },
   },
   { timestamps: true }
 );
 
-export default mongoose.model('Animal', AnimalSchema);
+export default mongoose.model("Animal", AnimalSchema);

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import Animal from './Animal';
-import { useAppContext } from '../context/appContext';
-import Loading from './Loading';
-import Wrapper from '../assets/wrappers/AnimalContainer';
-import { Link } from 'react-router-dom';
-import PageBtnContainer from './PageBtnContainer';
+import React, { useEffect, useState } from "react";
+import Animal from "./Animal";
+import { useAppContext } from "../context/appContext";
+import Loading from "./Loading";
+import Wrapper from "../assets/wrappers/AnimalContainer";
+import { Link } from "react-router-dom";
+import PageBtnContainer from "./PageBtnContainer";
 
 const AnimalsContainer = () => {
   const {

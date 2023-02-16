@@ -6,6 +6,7 @@ import { useAppContext } from "../context/appContext";
 
 const AddAnimal = () => {
   const [imageValue, setImageValue] = useState(null);
+  const [imageName, setImageName] = useState("SAS");
   const {
     isLoading,
     isEditing,
@@ -72,10 +73,19 @@ const AddAnimal = () => {
       imageValue = src;
 
       console.log(imageValue);
+      setImageName(imageValue);
       return false;
     } catch (error) {
       console.log("aaaaa");
     }
+  };
+
+  const changeInputValue = (e) => {
+    e.preventDefault();
+
+    let x = e.target.value.replace(/\\/g, "");
+    x = x.replace("C:fakepath", "");
+    setImageName(x);
   };
 
   return (
@@ -130,7 +140,12 @@ const AddAnimal = () => {
               accept='image/*'
               handleChange={handleAnimalPhoto}
             /> */}
-            {/* <input type='file' onChange={fileSelectedHandler} /> */}
+            <input
+              type='file'
+              name='name'
+              onChange={changeInputValue}
+              onSubmit={fileSelectedHandler}
+            />
             <FormRow
               type='text'
               name='image'
@@ -138,6 +153,7 @@ const AddAnimal = () => {
               labelText='Zdjęcie zwierzaka'
               handleChange={handleAnimalInput}
             />
+            {/* <input type='text' name='image' value={imageName} /> */}
           </div>
           <div>
             <label htmlFor='description' className='form-label'>

@@ -10,24 +10,18 @@ const PageBtnContainer = () => {
   });
   const prevPage = () => {
     let newPage = page - 1;
-    if (newPage < 1) {
-      newPage = numOfPages;
-    }
+    if (newPage < 1) { newPage = numOfPages }
     changePage(newPage);
   };
   const nextPage = () => {
     let newPage = page + 1;
-    if (newPage > numOfPages) {
-      newPage = 1;
-    }
+    if (newPage > numOfPages) {newPage = 1}
     changePage(newPage);
   };
 
   return (
     <Wrapper>
-      <button className='prev-btn' onClick={prevPage}>
-        <HiChevronDoubleLeft />
-      </button>
+      <button className='prev-btn' onClick={prevPage}><HiChevronDoubleLeft /></button>
       <div className='btn-container'>
         {pages.map((pageNumber) => {
           return (
@@ -42,9 +36,7 @@ const PageBtnContainer = () => {
           );
         })}
       </div>
-      <button className='next-btn' onClick={nextPage}>
-        <HiChevronDoubleRight />
-      </button>
+      <button className='next-btn' onClick={nextPage}><HiChevronDoubleRight /></button>
     </Wrapper>
   );
 };

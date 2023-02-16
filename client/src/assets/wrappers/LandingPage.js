@@ -82,7 +82,6 @@ const Wrapper = styled.main`
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    border: 1px solid red;
     display: flex;
     justify-content: center;
     align-items: center;
