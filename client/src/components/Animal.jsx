@@ -19,7 +19,7 @@ const Animal = ({
   createdAt,
 }) => {
   const { setEditAnimal, deleteAnimal } = useAppContext();
-  console.log(image);
+
   let dateOfCreate = moment(createdAt);
   let dateOfLossNice = moment(dateOfLoss);
   dateOfCreate = dateOfCreate.format("ll");
@@ -28,7 +28,7 @@ const Animal = ({
     <Wrapper>
       <header>
         <div className='img-div'>
-          <img className='img' src={image} alt='animal' />
+          <img className='img' src={`uploads/${image}`} alt='animal' />
           {/* {image} */}
         </div>
         <div className='info'>

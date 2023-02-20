@@ -38,6 +38,9 @@ import {
   CHANGE_PAGE,
   GET_ANIMAL_LANDING_BEGIN,
   GET_ANIMAL_LANDING_SUCCESS,
+  UPLOAD_BEGIN,
+  UPLOAD_SUCCESS,
+  UPLOAD_ERROR,
 } from "./actions";
 
 const token = localStorage.getItem("token");
@@ -312,20 +315,10 @@ const AppProvider = ({ children }) => {
     }
   };
 
-  const createAnimal = async () => {
+  const createAnimal = async (animal) => {
     dispatch({ type: CREATE_ANIMAL_BEGIN });
     try {
-      const { name, rase, description, province, city, dateOfLoss, image } =
-        state;
-      await authFetch.post("/animals", {
-        name,
-        rase,
-        description,
-        province,
-        city,
-        dateOfLoss,
-        image,
-      });
+      await authFetch.post("/animals", animal);
       dispatch({ type: CREATE_ANIMAL_SUCCESS });
       dispatch({ type: CLEAR_VALUES });
     } catch (error) {
@@ -395,6 +388,17 @@ const AppProvider = ({ children }) => {
     dispatch({ type: CHANGE_PAGE, payload: { page } });
   };
 
+  const uploadImage = async (formData) => {
+    dispatch({ type: UPLOAD_BEGIN });
+    try {
+      await axios.post("/api/v1/animals/uploads", formData);
+      dispatch({ type: UPLOAD_SUCCESS });
+    } catch (error) {
+      console.log(error.response);
+      dispatch({ type: UPLOAD_ERROR });
+    }
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -419,6 +423,7 @@ const AppProvider = ({ children }) => {
         clearFilters,
         changePage,
         getAnimalsLanding,
+        uploadImage,
       }}
     >
       {children}

@@ -34,6 +34,9 @@ import {
   CHANGE_PAGE,
   GET_ANIMAL_LANDING_BEGIN,
   GET_ANIMAL_LANDING_SUCCESS,
+  UPLOAD_BEGIN,
+  UPLOAD_SUCCESS,
+  UPLOAD_ERROR,
 } from "./actions";
 
 import { initialState } from "./appContext";
@@ -313,6 +316,16 @@ const reducer = (state, action) => {
       totalAnimals: action.payload.totalAnimals,
       numOfPages: action.payload.numOfPages,
     };
+  }
+
+  if (action.type === UPLOAD_BEGIN) {
+    return { ...state, isLoading: true };
+  }
+  if (action.type === UPLOAD_SUCCESS) {
+    return { ...state, isLoading: false };
+  }
+  if (action.type === UPLOAD_ERROR) {
+    return { ...state, isLoading: false };
   }
 
   throw new Error(`no such action: ${action.type}`);
