@@ -1,20 +1,21 @@
-import { Header } from './components';
+import { Header } from "./components";
 import {
   AddAnimal,
+  EditAnimal,
   Error,
   Landing,
   Register,
   ProtectedRoute,
   GetAllAnimals,
-} from './pages';
+} from "./pages";
 import {
   Profile,
   ProfileEdit,
   AnimalsContainer,
   UsersAnimals,
   SingleAnimal,
-} from './components';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+} from "./components";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
@@ -29,6 +30,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <AddAnimal />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/edytuj-zwierze'
+            element={
+              <ProtectedRoute>
+                <EditAnimal />
               </ProtectedRoute>
             }
           />

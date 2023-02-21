@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
-import SingleAnimal from './SingleAnimal';
-import { useAppContext } from '../context/appContext';
-import Loading from './Loading';
-import Animal from './Animal';
-import moment from 'moment';
-import { Link } from 'react-router-dom';
-import Wrapper from '../assets/wrappers/UsersAnimals';
-import AnimalInfo from './AnimalInfo';
-import { FaLocationArrow, FaCity, FaCalendarAlt } from 'react-icons/fa';
-import { GiPoland } from 'react-icons/gi';
+import React, { useEffect } from "react";
+import SingleAnimal from "./SingleAnimal";
+import { useAppContext } from "../context/appContext";
+import Loading from "./Loading";
+import Animal from "./Animal";
+import moment from "moment";
+import { Link } from "react-router-dom";
+import Wrapper from "../assets/wrappers/UsersAnimals";
+import AnimalInfo from "./AnimalInfo";
+import { FaLocationArrow, FaCity, FaCalendarAlt } from "react-icons/fa";
+import { GiPoland } from "react-icons/gi";
 
 const UsersAnimals = () => {
   const {
@@ -38,7 +38,11 @@ const UsersAnimals = () => {
               <div className='animalCont' key={animal._id}>
                 <header>
                   <div className='img-div'>
-                    <img className='img' src={animal.image} alt='' />
+                    <img
+                      className='img'
+                      src={`uploads/${animal.image}`}
+                      alt=''
+                    />
                   </div>
                   <div className='info'>
                     <h5>{animal.name}</h5>
@@ -47,7 +51,7 @@ const UsersAnimals = () => {
                   <footer>
                     <div className='actions'>
                       <Link
-                        to='/dodaj-zwierze'
+                        to='/edytuj-zwierze'
                         className='btn edit-btn'
                         onClick={() => setEditAnimal(animal._id)}
                       >
@@ -77,12 +81,12 @@ const UsersAnimals = () => {
                     />
                     <AnimalInfo
                       icon={<FaCalendarAlt />}
-                      text={moment(animal.createdAt).format('ll')}
+                      text={moment(animal.createdAt).format("ll")}
                       labelText='Data dodania:'
                     />
                     <AnimalInfo
                       icon={<FaCalendarAlt />}
-                      text={moment(animal.dateOfLoss).format('ll')}
+                      text={moment(animal.dateOfLoss).format("ll")}
                       labelText='Data zaginięcia:'
                     />
                   </div>

@@ -40,7 +40,11 @@ const SingleAnimal = () => {
           <div className='cont'>
             <div className='singleanimal-top'>
               <div className='img-div'>
-                <img className='img' src={animal[0].image} alt='' />
+                <img
+                  className='img'
+                  src={`../uploads/${animal[0].image}`}
+                  alt=''
+                />
               </div>
               <div className='info-div'>
                 <div className='info'>

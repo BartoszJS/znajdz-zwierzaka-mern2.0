@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import Wrapper from "../assets/wrappers/DashboardFormPage";
 import { FormRow, FormRowSelect, Alert } from "../components";
 import { useAppContext } from "../context/appContext";
+import { useNavigate } from "react-router-dom";
 
 const AddAnimal = () => {
+  const navigate = useNavigate();
   const [imageValue, setImageValue] = useState(null);
   const [imageName, setImageName] = useState("SAS");
   const {
@@ -41,7 +43,7 @@ const AddAnimal = () => {
     }
     if (isEditing) {
       editAnimal();
-      return;
+      return navigate("/profile");
     }
     createAnimal();
   };
@@ -140,12 +142,12 @@ const AddAnimal = () => {
               accept='image/*'
               handleChange={handleAnimalPhoto}
             /> */}
-            <input
+            {/* <input
               type='file'
               name='name'
               onChange={changeInputValue}
               onSubmit={fileSelectedHandler}
-            />
+            /> */}
             <FormRow
               type='text'
               name='image'

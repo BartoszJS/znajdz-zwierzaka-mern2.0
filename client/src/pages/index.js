@@ -1,4 +1,5 @@
 import AddAnimal from "./AddAnimal.jsx";
+import EditAnimal from "./EditAnimal.jsx";
 import Error from "./Error.jsx";
 import GetAllAnimals from "./GetAllAnimals.jsx";
 import Landing from "./Landing.jsx";
@@ -11,6 +12,7 @@ export {
   Landing,
   Register,
   Profile,
+  EditAnimal,
   AddAnimal,
   GetAllAnimals,
   ProtectedRoute,

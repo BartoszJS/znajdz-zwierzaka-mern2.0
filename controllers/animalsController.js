@@ -15,6 +15,7 @@ const createAnimal = async (req, res) => {
   }
   req.body.createdBy = req.user.userId;
   const animal = await Animal.create(req.body);
+  console.log(animal);
   res.status(StatusCodes.CREATED).json({ animal });
 };
 const getAllAnimals = async (req, res) => {
