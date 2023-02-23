@@ -1,10 +1,13 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Wrapper from "../assets/wrappers/AddAnimal";
 import { FormRow, FormRowSelect, Alert } from "../components";
 import { useAppContext } from "../context/appContext";
+import { useNavigate } from "react-router-dom";
 
 const AddAnimal = () => {
+  const navigate = useNavigate();
+  const [navigateState, setNavigateState] = useState(false);
   const {
     isLoading,
     isEditing,
@@ -17,6 +20,8 @@ const AddAnimal = () => {
     uploadPhoto,
     editAnimal,
     uploadImage,
+    idZw,
+    clearId,
   } = useAppContext();
 
   const [name, setName] = useState("");
@@ -80,6 +85,7 @@ const AddAnimal = () => {
       editAnimal();
       return;
     }
+
     createAnimal();
   };
 
@@ -94,9 +100,30 @@ const AddAnimal = () => {
       description,
       image,
     };
-    console.log(animal);
     createAnimal(animal);
+    setTimeout(() => {
+      setNavigateState(true);
+    }, 2000);
   };
+
+  useEffect(() => {
+    if (idZw !== "") {
+      navigate(`/animals/${idZw}`);
+      window.location.reload();
+      clearId();
+    } else {
+      navigate(`/dodaj-zwierze`);
+    }
+  }, [navigateState]);
+
+  // useEffect(() => {
+  //   if (idZw !== "") {
+  //     navigate(`/animals/${idZw}`);
+  //     clearId();
+  //   } else {
+  //     navigate(`/dodaj-zwierze`);
+  //   }
+  // }, [idZw]);
 
   const handlePhoto = (e) => {
     setImage(e.target.files[0].name);
@@ -200,7 +227,7 @@ const AddAnimal = () => {
           </div>
           <div className='div-buttons'>
             <button className='button-add' type='submit'>
-              SUBMIT
+              DODAJ
             </button>
             <button
               className='button-clear'

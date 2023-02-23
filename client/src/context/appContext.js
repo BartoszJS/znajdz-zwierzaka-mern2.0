@@ -1,4 +1,4 @@
-import React, { useReducer, useContext } from "react";
+import React, { useReducer, useContext, useState } from "react";
 import axios from "axios";
 
 import reducer from "./reducer";
@@ -41,6 +41,7 @@ import {
   UPLOAD_BEGIN,
   UPLOAD_SUCCESS,
   UPLOAD_ERROR,
+  CLEAR_ID,
 } from "./actions";
 
 const token = localStorage.getItem("token");
@@ -88,10 +89,10 @@ const initialState = {
   totalAnimals: 0,
   numOfPages: 1,
   page: 1,
-
   searchProvince: "Wszystkie",
   sort: "Najnowsze",
   sortOptions: ["Najnowsze", "Najstarsze"],
+  idZw: "",
 };
 
 const AppContext = React.createContext();
@@ -130,6 +131,11 @@ const AppProvider = ({ children }) => {
   const displayAlert = () => {
     dispatch({ type: DISPLAY_ALERT });
     clearAlert();
+  };
+  const clearId = () => {
+    dispatch({
+      type: CLEAR_ID,
+    });
   };
 
   const protectedAlert = () => {
@@ -318,8 +324,13 @@ const AppProvider = ({ children }) => {
   const createAnimal = async (animal) => {
     dispatch({ type: CREATE_ANIMAL_BEGIN });
     try {
-      await authFetch.post("/animals", animal);
-      dispatch({ type: CREATE_ANIMAL_SUCCESS });
+      const response = await authFetch.post("/animals", animal);
+      console.log(response.data.animal._id);
+      console.log(typeof response.data.animal._id);
+      dispatch({
+        type: CREATE_ANIMAL_SUCCESS,
+        payload: { msg: response.data.animal._id },
+      });
       dispatch({ type: CLEAR_VALUES });
     } catch (error) {
       if (error.response.status !== 401)
@@ -424,6 +435,7 @@ const AppProvider = ({ children }) => {
         changePage,
         getAnimalsLanding,
         uploadImage,
+        clearId,
       }}
     >
       {children}

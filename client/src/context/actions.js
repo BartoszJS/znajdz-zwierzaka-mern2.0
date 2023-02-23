@@ -56,3 +56,5 @@ export const GET_ANIMAL_LANDING_SUCCESS = "GET_ANIMAL_SUCCESS";
 export const UPLOAD_BEGIN = "UPLOAD_BEGIN";
 export const UPLOAD_SUCCESS = "UPLOAD_SUCCESS";
 export const UPLOAD_ERROR = "UPLOAD_ERROR";
+
+export const CLEAR_ID = "CLEAR_ID";

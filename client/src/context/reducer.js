@@ -37,6 +37,7 @@ import {
   UPLOAD_BEGIN,
   UPLOAD_SUCCESS,
   UPLOAD_ERROR,
+  CLEAR_ID,
 } from "./actions";
 
 import { initialState } from "./appContext";
@@ -178,12 +179,14 @@ const reducer = (state, action) => {
     return { ...state, isLoading: true };
   }
   if (action.type === CREATE_ANIMAL_SUCCESS) {
+    console.log(action.payload.msg);
     return {
       ...state,
       isLoading: false,
       showAlert: true,
       alertType: "success",
       alertText: "Zwierze zostało dodane",
+      idZw: action.payload.msg,
     };
   }
   if (action.type === CREATE_ANIMAL_ERROR) {
@@ -197,6 +200,9 @@ const reducer = (state, action) => {
   }
   if (action.type === GET_ANIMAL_BEGIN) {
     return { ...state, isLoading: true, showAlert: false };
+  }
+  if (action.type === CLEAR_ID) {
+    return { idZw: "" };
   }
 
   if (action.type === GET_ANIMAL_SUCCESS) {
